@@ -188,6 +188,13 @@
 									<option value="employee">Employee</option>\
 								</select>\
 							</div>\
+							<div class="form-group">\
+								<label for="speciality">Speciality</label>\
+								<select class="appFormInput" id="speciality" name="speciality" required="">\
+									<option value="car_technitian">Car Technitian</option>\
+									<option value="employee">Employee</option>\
+								</select>\
+							</div>\
 						  <div class="form-group">\
 						    <label for="email">Email address:</label>\
 						    <input type="email" class="form-control" id="emailUpdate" value="'+ email +'">\
