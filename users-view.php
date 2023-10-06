@@ -23,10 +23,23 @@
 			<?php include('partials/app-topnav.php') ?>
 			<div class="dashboard_content">
 				<div class="dashboard_content_main">		
-					<div class="row">
+					<div class="row"> 
 						<div class="column column-12">
 							<h1 class="section_header"> List of Users</h1>
 							<div class="section_content">
+								<div class="reportTypeContainer">
+									<div class="reportType">
+										<p>Search ID</p>
+										<input type="text" id="searchInput" value = "<?= isset($_GET['productName']) ? $_GET['productName'] : '' ?>" placeholder="Enter Employee ID" style="width: 350px;" oninput="filterProductsBySearch()" />
+									</div>
+									<div class="reportType">
+										<p>Print Report Employees</p>
+										<div class="alignRight">
+											<a href="database/report_csv.php?report=employee" class="reportExportBtn">Excel</a>
+											<a href="database/report_pdf.php?report=employee" class="reportExportBtn">PDF</a>
+										</div>
+									</div>
+								</div>
 								<div class="users">
 									<table>
 										<thead>
@@ -36,7 +49,7 @@
 												<th>First Name</th>
 												<th>Last Name</th>
 												<th>Role</th>
-												<th>Speciality</th>
+												<th>Expertise</th>
 												<th>Contact Details</th>
 												<th>Created At</th>
 												<th>Updated At</th>
@@ -56,7 +69,7 @@
 													<td class="firstName"><?= $user['first_name'] ?></td>
 													<td class="lastName"><?= $user['last_name'] ?></td>
 													<td class="role"><?= $user['role'] ?></td>
-													<td class="speciality"><?= $user['speciality'] ?></td>
+													<td class="expertise"><?= $user['expertise'] ?></td>
 													<td><span class="email"><?= $user['email'] ?></span><br><span class="c_number"><?= $user['c_number'] ?></span></td>
 						
 													<td><?= date('M d,Y @ h:i:s A', strtotime($user['created_at'])) ?></td>
@@ -165,6 +178,7 @@
 					firstName = targetElement.closest('tr').querySelector('td.firstName').innerHTML;
 					lastName = targetElement.closest('tr').querySelector('td.lastName').innerHTML;
 					role = targetElement.closest('tr').querySelector('td.role').innerHTML;
+					expertise = targetElement.closest('tr').querySelector('td.expertise').innerHTML;
 					email = targetElement.closest('tr').querySelector('.email').innerHTML;
 					c_number = targetElement.closest('tr').querySelector('.c_number').innerHTML;
 					userId = targetElement.dataset.userid;
@@ -189,10 +203,11 @@
 								</select>\
 							</div>\
 							<div class="form-group">\
-								<label for="speciality">Speciality</label>\
-								<select class="appFormInput" id="speciality" name="speciality" required="">\
-									<option value="car_technitian">Car Technitian</option>\
-									<option value="employee">Employee</option>\
+								<label for="expertise">Expertise</label>\
+								<select class="appFormInput" id="expertise" name="expertise" required="">\
+									<option value="compressor">Compressor</option>\
+									<option value="evaporator">Evaporator</option>\
+									<option value="resistor">Resistor</option>\
 								</select>\
 							</div>\
 						  <div class="form-group">\
@@ -213,6 +228,7 @@
 										f_name: document.getElementById('firstName').value,
 										l_name: document.getElementById('lastName').value,
 										role: document.getElementById('role').value,
+										expertise: document.getElementById('expertise').value,
 										email: document.getElementById('emailUpdate').value,
 										c_number: document.getElementById('cnumberUpdate').value,
 									},
@@ -244,6 +260,24 @@
 
 	var script = new script;
 	script.initialize();
+
+	// Filter products based on search input
+	filterProductsBySearch();
+		function filterProductsBySearch() {
+			var input = document.getElementById('searchInput').value.toLowerCase();
+			var rows = document.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+			for (var i = 0; i < rows.length; i++) {
+				var itemCode = rows[i].getElementsByTagName('td')[1].textContent.toLowerCase(); // Change the column number to the item code column
+				var productName = rows[i].getElementsByTagName('td')[3].textContent.toLowerCase(); // Change the column number to the product name column
+
+				if (itemCode.indexOf(input) > -1 || productName.indexOf(input) > -1) {
+					rows[i].style.display = '';
+				} else {
+					rows[i].style.display = 'none';
+				}
+			}
+		}
 
 	$(document).on('click', '#emailTo', function() {
 		$('#toEmail').val($(this).data('email'));
