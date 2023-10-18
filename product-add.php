@@ -25,7 +25,7 @@
 				<div class="dashboard_content">
 					<div class="dashboard_content_main">		
 						<div class="row">
-							<div class="column column-12" style="height: 600px; overflow: auto;">
+							<div class="column column-12" style="height: 597px; overflow: auto;">
 								<h1 class="section_header"> Create Product</h1>
 								<?php 
 									if(isset($_SESSION['response'])){
