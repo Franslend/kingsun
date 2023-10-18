@@ -39,7 +39,7 @@
 									</div>
 								<?php unset($_SESSION['response']); }  ?>
 								<div id="userAddFormContainer">						
-									<form action="database/add.php" method="POST" class="appForm" enctype="multipart/form-data">
+									<form action="database/add-message.php" method="POST" class="appForm" enctype="multipart/form-data">
 									<?php
 													$show_table = 'products';
 													$products = include('database/show.php');
