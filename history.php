@@ -35,46 +35,48 @@
 	<div id="dashboardMainContainer">
 		<?php include('partials/app-sidebar.php') ?>
 		<div class="dasboard_content_container" id="dasboard_content_container">
-			<?php include('partials/app-topnav.php') ?>
-			<div class="dashboard_content">
-				<div class="dashboard_content_main">		
-					<div class="row">
-						<div class="column column-12">
-							<h1 class="section_header"><i class="fa fa-list"></i> List of History</h1>
-							<div class="section_content">
+			<div id="dashboardContent">
+				<?php include('partials/app-topnav.php') ?>
+				<div class="dashboard_content">
+					<div class="dashboard_content_main">		
+						<div class="row">
+							<div class="column column-12" style="height: 596px; overflow: auto;">
+								<h1 class="section_header"> List of History</h1>
+								<div class="section_content">
 
 
-										<div class="row">
-											<div class="col-xs-12">
-												<table class="table table-striped table-hover table-condensed" id="ex-datatables-basic">
-													<thead>
-														<tr>
-															<th>#</th>
-															<th>Module name</th>
-															<th>Description</th>
-															<th>Deleted at</th>
-															<th>Action</th>
-														</tr>
-													</thead>
-													<tbody>
-														<!-- <tr>
-															<td>59</td>
-															<td>Ciara</td>
-															<td>Franks</td>
-															<td>IB3545</td>
-															<td>
-																<button type="button" data-module_name="" data-primary_id="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</button>
-															</td>
-														</tr> -->
-													</tbody>
-												</table>
+											<div class="row">
+												<div class="col-xs-12">
+													<table class="table table-striped table-hover table-condensed" id="ex-datatables-basic">
+														<thead>
+															<tr>
+																<th>#</th>
+																<th>Module name</th>
+																<th>Description</th>
+																<th>Deleted at</th>
+																<th>Action</th>
+															</tr>
+														</thead>
+														<tbody>
+															<!-- <tr>
+																<td>59</td>
+																<td>Ciara</td>
+																<td>Franks</td>
+																<td>IB3545</td>
+																<td>
+																	<button type="button" data-module_name="" data-primary_id="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</button>
+																</td>
+															</tr> -->
+														</tbody>
+													</table>
+												</div>
 											</div>
-										</div>
 
 
+								</div>
 							</div>
-						</div>
-					</div>					
+						</div>					
+					</div>
 				</div>
 			</div>
 		</div>

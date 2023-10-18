@@ -6,7 +6,7 @@
 	// Get all products.
 	$show_table = 'products';
 	$products = include('database/show.php');
-	$categories = ['Freon', 'Evaporator', 'Compressor', 'Capacitor', 'Dryer', 'Rubber Insolation', 'Cabin Filter', 'Resistor Block', 'Others'];
+	$categories = ['Cabin Filter', 'Capacitor', 'Compressor', 'Compressor Parts', 'Copper Tube', 'Dryer', 'Engine Filter', 'Evaporator', 'Refrigerant', 'Refrigerant Oil', 'Resistor Block', 'Rod', 'Rubber Insulation Tube', 'Others'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,134 +27,138 @@
 	<div id="dashboardMainContainer">
 		<?php include('partials/app-sidebar.php') ?>
 		<div class="dasboard_content_container" id="dasboard_content_container">
-			<?php include('partials/app-topnav.php') ?>
-			<div class="dashboard_content">
-				<div class="dashboard_content_main">		
-					<div class="row">
-						<div class="column column-12">
-							<h1 class="section_header">List of Products</h1>
-							<?php
-							if (isset($_SESSION['response_update_product'])) {
-								echo $_SESSION['response_update_product'];
-								unset($_SESSION['response_update_product']);
-							}
-							?>
-							<div class="reportTypeContainer">
-								<div class="reportType">
-									<p>Categories</p>
-									<div class="categoryContainer">
-										<div class="categoryList">
-											<select id="categorySelect" onchange="filterProducts(this.value)">
-												<option value="all">All</option>
-												<?php foreach ($categories as $category) { ?>
-													<option value="<?php echo $category; ?>"><?php echo $category; ?></option>
-												<?php } ?>
-											</select>
+			<div id="dashboardContent">
+				<?php include('partials/app-topnav.php') ?>
+				<div class="dashboard_content">
+					<div class="dashboard_content_main">		
+						<div class="row">
+							<div class="column column-12" style="height: 595px; overflow: auto;">
+								<h1 class="section_header">List of Products</h1>
+								<?php
+								if (isset($_SESSION['response_update_product'])) {
+									echo $_SESSION['response_update_product'];
+									unset($_SESSION['response_update_product']);
+								}
+								?>
+								<div class="reportTypeContainer">
+									<div class="reportType">
+										<p>Categories</p>
+										<div class="categoryContainer">
+											<div class="categoryList">
+												<select id="categorySelect" onchange="filterProducts(this.value)">
+													<option value="all">All</option>
+													<?php foreach ($categories as $category) { ?>
+														<option value="<?php echo $category; ?>"><?php echo $category; ?></option>
+													<?php } ?>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="reportType">
+										<p>Search Products</p>
+										<input type="text" id="searchInput" value = "<?= isset($_GET['productName']) ? $_GET['productName'] : '' ?>" placeholder="Enter item code or product name..." style="width: 350px;" oninput="filterProductsBySearch()" />
+
+									</div>
+									<div class="reportType">
+										<p>Print Report Products</p>
+										<div class="alignRight">
+											<a href="database/report_csv.php?report=product" class="reportExportBtn">Excel</a>
+											<a href="database/report_pdf.php?report=product" class="reportExportBtn">PDF</a>
 										</div>
 									</div>
 								</div>
-								<div class="reportType">
-									<p>Search Products</p>
-									<input type="text" id="searchInput" value = "<?= isset($_GET['productName']) ? $_GET['productName'] : '' ?>" placeholder="Enter item code or product name..." style="width: 350px;" oninput="filterProductsBySearch()" />
+								<p class="userCount"><?= count($products) ?> products </p>
+								<div class="section_content" style="height: 500px; overflow: auto;">
+									<div class="users">
+										<table>
+											<thead>
+												<tr>												
+													<th>#</th>	
+													<th width="0">Item Code</th>				
+													<th width="10%">Image</th>
+													<th>Product Name</th>
+													<th width="8%">Category</th>
+													<th width="15%">Description</th>
+													<th>Stocks</th>
+													<th width="8%">Location</th>
+													<th>Price</th>
+													<th width="8%">Suppliers</th>
+													<th width="8%">Created By</th>
+													<th width="10%">Created At</th>
+													<th width="10%">Updated At</th>
+													<th width="6%">Action</th>
+												</tr>
+											</thead>
+											<tbody>
+												<?php 
+												$stmt = $conn->prepare("SELECT * FROM products where deleted = 0 ORDER BY created_at DESC");
+												$stmt->execute();
+												$stmt->setFetchMode(PDO::FETCH_ASSOC);
+												$products2 = $stmt->fetchAll();
+												foreach($products2 as $index => $product){ ?>
+													<tr>
+														<td><?= $index + 1 ?></td>
+														<td class="item_code"><?= $product['item_code'] ?></td>
+														<td class="firstName">
+															<img class="productImages" src="uploads/products/<?= $product['img'] ?>" alt="" />
+														</td>
+														<td class="lastName"><?= $product['product_name'] ?></td>
+														<td class="lastName"><?= $product['category'] ?></td>
+														<td class="email"><?= $product['description'] ?></td>
+														<td class="lastName"><?= number_format($product['stocks']) ?></td>
+														<td class="lastName"><?= $product['p_location'] ?></td>
+														<td class="lastName"><?= number_format($product['price']) ?></td>
+														<td class="email">
+															<?php
+																$supplier_list = '-';
 
-								</div>
-								<div class="reportType">
-									<p>Print Report Products</p>
-									<div class="alignRight">
-										<a href="database/report_csv.php?report=product" class="reportExportBtn">Excel</a>
-										<a href="database/report_pdf.php?report=product" class="reportExportBtn">PDF</a>
+																$pid = $product['id'];
+																$stmt = $conn->prepare("
+																	SELECT supplier_name ,suppliers.id as suppliers_id
+																		FROM suppliers, productsuppliers 
+																		WHERE 
+																			productsuppliers.product=$pid 
+																				AND 
+																			productsuppliers.supplier = suppliers.id
+																	");
+																$stmt->execute();
+																$row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+																if ($row) {                                                                
+																	$supplier_arr = $row; // No need to use array_column now
+																	$supplier_list = implode("<br>", array_map(function ($supplier) {
+																		return "<a href='#view' id='view-suppliers' data-id='".$supplier['suppliers_id']."'>".$supplier['supplier_name']."</a>";
+																	}, $supplier_arr));
+																}															
+																echo $supplier_list;
+															?>
+														</td>
+														<td>
+															<?php
+																$uid = $product['created_by'];
+																$stmt = $conn->prepare("SELECT * FROM users WHERE id=$uid");
+																$stmt->execute();
+																$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+																$created_by_name = $row['first_name'] . ' ' . $row['last_name'];
+																echo $created_by_name;
+															?>
+														</td>
+														<td><?= date('M d,Y @ h:i:s A', strtotime($product['created_at'])) ?></td>
+														<td><?= date('M d,Y @ h:i:s A', strtotime($product['updated_at'])) ?></td>
+														<td>
+															<a href="#edit" class="updateProduct-deleted" id="edit-Product" data-id="<?= $product['id'] ?>"> <i class="fa-regular fa-pen-to-square"></i> Edit</a> | 
+															<a href="" class="deleteProduct" data-name="<?= $product['product_name'] ?>" data-pid="<?= $product['id'] ?>"> <i class="fa fa-trash"></i> Delete</a>
+														</td>
+													</tr>
+												<?php } ?>
+											</tbody>
+										</table>
 									</div>
 								</div>
 							</div>
-							<p class="userCount"><?= count($products) ?> products </p>
-							<div class="section_content" style="height: 500px; overflow: auto;">
-								<div class="users">
-									<table>
-										<thead>
-											<tr>												
-												<th>#</th>	
-												<th>Item Code</th>				
-												<th>Image</th>
-												<th>Product Name</th>
-												<th>Category</th>
-												<th>Stocks</th>
-												<th width="18%">Description</th>
-												<th>Price</th>
-												<th width="10%">Suppliers</th>
-												<th width="8%">Created By</th>
-												<th width="10%">Created At</th>
-												<th width="10%">Updated At</th>
-												<th width="7%">Action</th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php 
-											$stmt = $conn->prepare("SELECT * FROM products where deleted = 0 ORDER BY created_at DESC");
-											$stmt->execute();
-											$stmt->setFetchMode(PDO::FETCH_ASSOC);
-											$products2 = $stmt->fetchAll();
-											foreach($products2 as $index => $product){ ?>
-												<tr>
-													<td><?= $index + 1 ?></td>
-													<td class="item_code"><?= $product['item_code'] ?></td>
-													<td class="firstName">
-														<img class="productImages" src="uploads/products/<?= $product['img'] ?>" alt="" />
-													</td>
-													<td class="lastName"><?= $product['product_name'] ?></td>
-													<td class="lastName"><?= $product['category'] ?></td>
-													<td class="lastName"><?= number_format($product['stocks']) ?></td>
-													<td class="email"><?= $product['description'] ?></td>
-													<td class="lastName"><?= number_format($product['price']) ?></td>
-													<td class="email">
-														<?php
-															$supplier_list = '-';
-
-															$pid = $product['id'];
-															$stmt = $conn->prepare("
-																SELECT supplier_name ,suppliers.id as suppliers_id
-																	FROM suppliers, productsuppliers 
-																	WHERE 
-																		productsuppliers.product=$pid 
-																			AND 
-																		productsuppliers.supplier = suppliers.id
-																");
-															$stmt->execute();
-															$row = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-															if ($row) {                                                                
-																$supplier_arr = $row; // No need to use array_column now
-																$supplier_list = implode("<br>", array_map(function ($supplier) {
-																	return "<a href='#view' id='view-suppliers' data-id='".$supplier['suppliers_id']."'>".$supplier['supplier_name']."</a>";
-																}, $supplier_arr));
-															}															
-															echo $supplier_list;
-														?>
-													</td>
-													<td>
-														<?php
-															$uid = $product['created_by'];
-															$stmt = $conn->prepare("SELECT * FROM users WHERE id=$uid");
-															$stmt->execute();
-															$row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-															$created_by_name = $row['first_name'] . ' ' . $row['last_name'];
-															echo $created_by_name;
-														?>
-													</td>
-													<td><?= date('M d,Y @ h:i:s A', strtotime($product['created_at'])) ?></td>
-													<td><?= date('M d,Y @ h:i:s A', strtotime($product['updated_at'])) ?></td>
-													<td>
-														<a href="#edit" class="updateProduct-deleted" id="edit-Product" data-id="<?= $product['id'] ?>"> <i class="fa-regular fa-pen-to-square"></i> Edit</a> | 
-														<a href="" class="deleteProduct" data-name="<?= $product['product_name'] ?>" data-pid="<?= $product['id'] ?>"> <i class="fa fa-trash"></i> Delete</a>
-													</td>
-												</tr>
-											<?php } ?>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>					
+						</div>					
+					</div>
 				</div>
 			</div>
 		</div>
@@ -323,6 +327,10 @@ function showEditDialogs(id) {
 					<div class="appFormInputContainer">\
 						<label for="item_code">Item code</label>\
 						<input type="text" class="appFormInput" id="item_code" placeholder="Enter Item code..." name="item_code" required="" />\
+					</div>\
+					<div class="appFormInputContainer">\
+						<label for="p_location">Product Location</label>\
+						<input type="text" class="appFormInput" id="p_location" placeholder="Enter Item location..." name="p_location" required="" />\
 					</div>\
 					<div class="appFormInputContainer">\
 						<label for="product_name">Product Name</label>\

@@ -20,85 +20,89 @@
 	<div id="dashboardMainContainer">
 		<?php include('partials/app-sidebar.php') ?>
 		<div class="dasboard_content_container" id="dasboard_content_container">
-			<?php include('partials/app-topnav.php') ?>
-			<div class="dashboard_content">
-				<div class="dashboard_content_main">		
-					<div class="row">
-						<div class="column column-12">
-							<h1 class="section_header"><i class="fa fa-list"></i> Collection receipts</h1>
-							<div class="section_content">
-                                    <h4>Categorization</h5>
-                                    <!-- <div class="row">
-                                        <div class="col-md-2">
-                                            <label for="basic-url">FROM</label>
-                                            <input type="date" class="form-control">
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label for="basic-url">TO</label>
-                                            <input type="date" class="form-control">
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label for="basic-url">Action</label>
-                                            <br>
-                                            <br>
-                                            <button type="button" class="btn btn-primary">Find</button>
-                                        </div>
-                                    </div> -->
-                                        <style>
-                                            .bor{
-                                                border: 5px solid red;
-                                            }
-                                            table, th, td {
-                                                border:none;
-                                                border-collapse: none;
-                                            }
-                                            .containers {
-                                                display: flex;
-                                                justify-content: center;
-                                                align-items: center;
-                                            }
-                                            .text-center{
-                                                text-align:center !important;
-                                            }
-                                            .text-left{
-                                                text-align:left !important;
-                                            }
-                                            .text-right{
-                                                text-align:right !important;
-                                            }
-
-                                        </style>
-
-                                                <div class="panel panel-default" id="print-preview">
-                                                    <div class="panel-heading"> 
-                                                        <span class="no-print">FROM</span> 
-                                                        <input type="date" class="form-controls no-print" id="start" value="<?= date('Y-m-d') ?>"> 
-                                                        <span class="no-print">TO</span>
-                                                        <input type="date" class="form-controls no-print" id="end" value="<?= date('Y-m-d') ?>">  
-                                                        <button type="button"  id="find-summarySoldItems" class="btn btn-sm btn-primary no-print">Find</button>
-                                                        <button type="button"  id="find-summarySoldItems-today" class="btn btn-sm btn-success no-print">Today</button>
-                                                        
-                                                    </div>
-                                                    <div class="panel-body"></div>
-                                                    <div><span class="no-print">DATE:</span> (<span id="start-span"></span> - <span id="end-span"></span>)</div>
-                                                    <table class="table">
-                                                        <thead>
-                                                        <tr>
-                                                            <th class="text-left">Customer</th>
-                                                            <th class="text-left">Action</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody id="summarySoldItems">
-                                                        </tbody>
-                                                    </table>
+            <div id="dashboardContent">
+				<?php include('partials/app-topnav.php') ?>
+                <!--<div id="dashboardCollect">-->
+                    <div class="dashboard_content">
+                        <div class="dashboard_content_main">		
+                            <div class="row">
+                                <div class="column column-12" style="height: 596px; overflow: auto;">
+                                    <h1 class="section_header"> Customer Invoice's</h1>
+                                    <div class="section_content">
+                                            <h4>E-receipts Data</h5>
+                                            <!-- <div class="row">
+                                                <div class="col-md-2">
+                                                    <label for="basic-url">FROM</label>
+                                                    <input type="date" class="form-control">
                                                 </div>
+                                                <div class="col-md-2">
+                                                    <label for="basic-url">TO</label>
+                                                    <input type="date" class="form-control">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label for="basic-url">Action</label>
+                                                    <br>
+                                                    <br>
+                                                    <button type="button" class="btn btn-primary">Find</button>
+                                                </div>
+                                            </div> -->
+                                                <style>
+                                                    .bor{
+                                                        border: 5px solid red;
+                                                    }
+                                                    table, th, td {
+                                                        border:none;
+                                                        border-collapse: none;
+                                                    }
+                                                    .containers {
+                                                        display: flex;
+                                                        justify-content: center;
+                                                        align-items: center;
+                                                    }
+                                                    .text-center{
+                                                        text-align:center !important;
+                                                    }
+                                                    .text-left{
+                                                        text-align:left !important;
+                                                    }
+                                                    .text-right{
+                                                        text-align:right !important;
+                                                    }
+
+                                                </style>
+
+                                                        <div class="panel panel-default" id="print-preview">
+                                                            <div class="panel-heading"> 
+                                                                <span class="no-print">FROM</span> 
+                                                                <input type="date" class="form-controls no-print" id="start" value="<?= date('Y-m-d') ?>"> 
+                                                                <span class="no-print">TO</span>
+                                                                <input type="date" class="form-controls no-print" id="end" value="<?= date('Y-m-d') ?>">  
+                                                                <button type="button"  id="find-summarySoldItems" class="btn btn-sm btn-primary no-print">Find</button>
+                                                                <button type="button"  id="find-summarySoldItems-today" class="btn btn-sm btn-success no-print">Today</button>
+                                                                
+                                                            </div>
+                                                            <div class="panel-body"></div>
+                                                            <div><span class="no-print">DATE:</span> (<span id="start-span"></span> - <span id="end-span"></span>)</div>
+                                                            <table class="table">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th class="text-left">Customer</th>
+                                                                    <th class="text-left">Action</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody id="summarySoldItems">
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
 
 
-							</div>
-						</div>
-					</div>					
-				</div>
-			</div>
+                                    </div>
+                                </div>
+                            </div>					
+                        </div>
+                    </div>
+                </div>
+            </div>
 		</div>
 	</div>
 

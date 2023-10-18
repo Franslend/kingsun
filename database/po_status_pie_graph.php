@@ -23,16 +23,24 @@ foreach($statuses as $status){
     $total = [];
     $best_sale = isset($_GET['best_sale']) ? "AND DATE_FORMAT(c.date_order, '%Y-%m') = '".$_GET['best_sale']."'" : '';
     
-    $stmt = $conn->prepare("SELECT *,
-    COALESCE((SELECT SUM(a.price * c.qty)
-               FROM tbl_cart c
-               WHERE c.status = 'completed' AND c.product_id = a.id ".$best_sale." ), 0) AS total
-  FROM products a
-  ORDER BY total DESC");
+//     $stmt = $conn->prepare("SELECT *,
+//     COALESCE((SELECT SUM(a.price * c.qty)
+//                FROM tbl_cart c
+//                WHERE c.status = 'completed' AND c.product_id = a.id ".$best_sale." ), 0) AS total
+//   FROM products a
+//   ORDER BY total DESC LIMIT 10");
+$stmt = $conn->prepare("SELECT *,
+COALESCE((SELECT SUM(c.qty)
+           FROM tbl_cart c
+           WHERE c.status = 'completed' AND c.product_id = a.id ".$best_sale." ), 0) AS total
+FROM products a
+ORDER BY total DESC LIMIT 10");
     $stmt->execute();
     $rows = $stmt->fetchAll();
     foreach ($rows as $key => $value) {
         $productFetch[] = $value['product_name'];
         $total[] = $value['total'];
     }
-//echo json_encode($productFetch);
+    $total_new = array_map( function($value) { return (int)$value; }, $total );
+
+

@@ -73,7 +73,7 @@
          <option value="">Select Product</option>
          <option value="19">R404A</option>
          <option value="18">R134A</option>
-         <option value="17">Insolatiosn Tubess</option>
+         <option value="17">Rubber Insolation Tube</option>
          <option value="16">Fiber Glass</option>
          <option value="15">Refregenrant oil</option>
          <option value="14">Compressor</option>
@@ -95,7 +95,7 @@
          <option value="">Select Product</option>
          <option value="19">R404A</option>
          <option value="18">R134A</option>
-         <option value="17">Insolatiosn Tubess</option>
+         <option value="17">Rubber Insolation Tube</option>
          <option value="16">Fiber Glass</option>
          <option value="15">Refregenrant oil</option>
          <option value="14">Compressor</option>

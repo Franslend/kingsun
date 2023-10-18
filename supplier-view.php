@@ -18,106 +18,112 @@
 	<div id="dashboardMainContainer">
 		<?php include('partials/app-sidebar.php') ?>
 		<div class="dasboard_content_container" id="dasboard_content_container">
-			<?php include('partials/app-topnav.php') ?>
-			<div class="dashboard_content">
-				<div class="dashboard_content_main">		
-					<div class="row">
-						<div class="column column-12">
-							<h1 class="section_header"> List of Suppliers</h1>
-							<div class="reportTypeContainer">
-								<div class="reportType">
-									<p>Search Supplier</p>
-									<input type="text" id="searchInput" placeholder="Enter supplier name..." oninput="filterProductsBySearch()" />
-								</div>
-									<div class="reportType">
-									<p>Print Report Suppliers</p>
-									<div class="alignRight">
-										<a href="database/report_csv.php?report=supplier" class="reportExportBtn">Excel</a>
-										<a href="database/report_pdf.php?report=supplier" class="reportExportBtn">PDF</a>
+			<div id="dashboardContent">
+				<?php include('partials/app-topnav.php') ?>
+				<!--<div id="dashboardScroll"> -->
+					<div class="dashboard_content">
+						<div class="dashboard_content_main">		
+							<div class="row">
+								<div class="column column-12" style="height: 596px; overflow: auto;">
+									<h1 class="section_header"> List of Suppliers</h1>
+									<div class="reportTypeContainer">
+										<div class="reportType">
+											<p>Search Supplier</p>
+											<input type="text" id="searchInput" placeholder="Enter supplier name..." oninput="filterProductsBySearch()" />
+										</div>
+											<div class="reportType">
+											<p>Print Report Suppliers</p>
+											<div class="alignRight">
+												<a href="database/report_csv.php?report=supplier" class="reportExportBtn">Excel</a>
+												<a href="database/report_pdf.php?report=supplier" class="reportExportBtn">PDF</a>
+											</div>
+										</div>
+									</div>
+									<div class="section_content">
+									<p class="userCount"><?= count($suppliers) ?> suppliers </p>
+										<div class="users">
+											<table>
+												<thead>
+													<tr>												
+														<th>#</th>
+														<th>VAT REG. TIN</th>					
+														<th>Supplier Name</th>
+														<th>Supplier Location</th>
+														<th>Contact Details</th>
+														<th>Products</th>
+														<th>Created By</th>
+														<th>Created At</th>
+														<th>Updated At</th>
+														<th>Action</th>
+													</tr>
+												</thead>
+												<tbody>
+													<?php 
+													$stmt = $conn->prepare("SELECT * FROM suppliers where deleted = 0 ORDER BY created_at DESC");
+													$stmt->execute();
+													$stmt->setFetchMode(PDO::FETCH_ASSOC);
+													
+													$suppliers2 = $stmt->fetchAll();
+													foreach($suppliers2 as $index => $supplier){ ?>
+														<tr>
+															<td><?= $index + 1 ?></td>
+															<td><?= $supplier['s_tin'] ?> </td>
+															<td>
+																<?= $supplier['supplier_name'] ?>
+															</td>
+															<td><?= $supplier['supplier_location'] ?> </td>
+															<td><a id = "emailTo" data-email = "<?= $supplier['email'] ?>" href="#email"><?= $supplier['email'] ?></a><br><?= $supplier['c_number'] ?></td>
+															<td>
+																<?php
+																	$product_list = '-';
+
+																	$sid = $supplier['id'];
+																	$stmt = $conn->prepare("
+																		SELECT product_name 
+																			FROM products, productsuppliers 
+																			WHERE 
+																				productsuppliers.supplier=$sid 
+																					AND 
+																				productsuppliers.product = products.id
+																		");
+																	$stmt->execute();
+																	$row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+																	if($row){																
+																		$product_arr = array_column($row, 'product_name');
+																		$product_list = '<li>' . implode("</li><li>", $product_arr);
+																	}
+
+																	echo $product_list;
+																?>
+															</td>
+															<td>
+																<?php
+																	$uid = $supplier['created_by'];
+																	$stmt = $conn->prepare("SELECT * FROM users WHERE id=$uid");
+																	$stmt->execute();
+																	$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+																	$created_by_name = $row['first_name'] . ' ' . $row['last_name'];
+																	echo $created_by_name;
+																?>
+															</td>
+															<td><?= date('M d,Y @ h:i:s A', strtotime($supplier['created_at'])) ?></td>
+															<td><?= date('M d,Y @ h:i:s A', strtotime($supplier['updated_at'])) ?></td>
+															<td>
+																<a href="" class="updateSupplier" data-sid="<?= $supplier['id'] ?>"> <i class="fa fa-pencil"></i> Edit</a> | 
+																<a href="" class="deleteSupplier" data-name="<?= $supplier['supplier_name'] ?>" data-sid="<?= $supplier['id'] ?>"> <i class="fa fa-trash"></i> Delete</a>
+															</td>
+														</tr>
+													<?php } ?>
+												</tbody>
+											</table>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="section_content">
-								<div class="users">
-									<table>
-										<thead>
-											<tr>												
-												<th>#</th>					
-												<th>Supplier Name</th>
-												<th>Supplier Location</th>
-												<th>Contact Details</th>
-												<th>Products</th>
-												<th>Created By</th>
-												<th>Created At</th>
-												<th>Updated At</th>
-												<th>Action</th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php 
-											$stmt = $conn->prepare("SELECT * FROM suppliers where deleted = 0 ORDER BY created_at DESC");
-											$stmt->execute();
-											$stmt->setFetchMode(PDO::FETCH_ASSOC);
-											
-											$suppliers2 = $stmt->fetchAll();
-											foreach($suppliers2 as $index => $supplier){ ?>
-												<tr>
-													<td><?= $index + 1 ?></td>
-													<td>
-														<?= $supplier['supplier_name'] ?>
-													</td>
-													<td><?= $supplier['supplier_location'] ?> </td>
-													<td><a id = "emailTo" data-email = "<?= $supplier['email'] ?>" href="#email"><?= $supplier['email'] ?></a><br><?= $supplier['c_number'] ?></td>
-													<td>
-														<?php
-															$product_list = '-';
-
-															$sid = $supplier['id'];
-															$stmt = $conn->prepare("
-																SELECT product_name 
-																	FROM products, productsuppliers 
-																	WHERE 
-																		productsuppliers.supplier=$sid 
-																			AND 
-																		productsuppliers.product = products.id
-																");
-															$stmt->execute();
-															$row = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-															if($row){																
-																$product_arr = array_column($row, 'product_name');
-																$product_list = '<li>' . implode("</li><li>", $product_arr);
-															}
-
-															echo $product_list;
-														?>
-													</td>
-													<td>
-														<?php
-															$uid = $supplier['created_by'];
-															$stmt = $conn->prepare("SELECT * FROM users WHERE id=$uid");
-															$stmt->execute();
-															$row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-															$created_by_name = $row['first_name'] . ' ' . $row['last_name'];
-															echo $created_by_name;
-														?>
-													</td>
-													<td><?= date('M d,Y @ h:i:s A', strtotime($supplier['created_at'])) ?></td>
-													<td><?= date('M d,Y @ h:i:s A', strtotime($supplier['updated_at'])) ?></td>
-													<td>
-														<a href="" class="updateSupplier" data-sid="<?= $supplier['id'] ?>"> <i class="fa fa-pencil"></i> Edit</a> | 
-														<a href="" class="deleteSupplier" data-name="<?= $supplier['supplier_name'] ?>" data-sid="<?= $supplier['id'] ?>"> <i class="fa fa-trash"></i> Delete</a>
-													</td>
-												</tr>
-											<?php } ?>
-										</tbody>
-									</table>
-									<p class="userCount"><?= count($suppliers) ?> suppliers </p>
-								</div>
-							</div>
+							</div>					
 						</div>
-					</div>					
+					</div>
 				</div>
 			</div>
 		</div>
@@ -235,6 +241,7 @@
 			$.ajax({
 				method: 'POST',
 				data: {
+					s_tin: document.getElementById('s_tin').value,
 					supplier_name: document.getElementById('supplier_name').value,
 					supplier_location: document.getElementById('supplier_location').value,
 					email: document.getElementById('email').value,
@@ -273,6 +280,10 @@
 				BootstrapDialog.confirm({
 					title: 'Update <strong>' + supplierDetails.supplier_name + '</strong>',
 					message: '<form action="database/add.php" method="POST" enctype="multipart/form-data" id="editSupplierForm">\
+						<div class="appFormInputContainer">\
+							<label for="s_tin">VAT REG. TIN</label>\
+							<input type="text" class="appFormInput" placeholder="Enter supplier TIN..." id="s_tin" name="s_tin" required="" >\
+						</div>\
 						<div class="appFormInputContainer">\
 							<label for="supplier_name">Supplier Name</label>\
 							<input type="text" class="appFormInput" id="supplier_name" value="'+ supplierDetails.supplier_name +'" placeholder="Enter supplier name..." name="supplier_name" />\

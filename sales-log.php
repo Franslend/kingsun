@@ -20,107 +20,110 @@
 	<div id="dashboardMainContainer">
 		<?php include('partials/app-sidebar.php') ?>
 		<div class="dasboard_content_container" id="dasboard_content_container">
-			<?php include('partials/app-topnav.php') ?>
-			<div class="dashboard_content">
-				<div class="dashboard_content_main">		
-					<div class="row">
-						<div class="column column-12">
-							<h1 class="section_header"><i class="fa fa-list"></i> Sale's Logs</h1>
-							<div class="section_content">
-                                    <h4>Monthly sales</h5>
-                                    <!-- <div class="row">
-                                        <div class="col-md-2">
-                                            <label for="basic-url">FROM</label>
-                                            <input type="date" class="form-control">
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label for="basic-url">TO</label>
-                                            <input type="date" class="form-control">
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label for="basic-url">Action</label>
-                                            <br>
-                                            <br>
-                                            <button type="button" class="btn btn-primary">Find</button>
-                                        </div>
-                                    </div> -->
-                                        <style>
-                                            .bor{
-                                                border: 5px solid red;
-                                            }
-                                            table, th, td {
-                                                border:none;
-                                                border-collapse: none;
-                                            }
-                                            .containers {
-                                                display: flex;
-                                                justify-content: center;
-                                                align-items: center;
-                                            }
-                                            .text-center{
-                                                text-align:center !important;
-                                            }
-                                            .text-left{
-                                                text-align:left !important;
-                                            }
-                                            .text-right{
-                                                text-align:right !important;
-                                            }
+            <div id="dashboardContent">
+				<?php include('partials/app-topnav.php') ?>
+                <div class="dashboard_content">
+                    <div class="dashboard_content_main">		
+                        <div class="row">
+                            <div class="column column-12" style="height: 596px; overflow: auto;">
+                                <h1 class="section_header"> Sale's Logs</h1>
+                                <div class="section_content">
+                                        <h4>Monthly sales</h5>
+                                        <!-- <div class="row">
+                                            <div class="col-md-2">
+                                                <label for="basic-url">FROM</label>
+                                                <input type="date" class="form-control">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label for="basic-url">TO</label>
+                                                <input type="date" class="form-control">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label for="basic-url">Action</label>
+                                                <br>
+                                                <br>
+                                                <button type="button" class="btn btn-primary">Find</button>
+                                            </div>
+                                        </div> -->
+                                            <style>
+                                                .bor{
+                                                    border: 5px solid red;
+                                                }
+                                                table, th, td {
+                                                    border:none;
+                                                    border-collapse: none;
+                                                }
+                                                .containers {
+                                                    display: flex;
+                                                    justify-content: center;
+                                                    align-items: center;
+                                                }
+                                                .text-center{
+                                                    text-align:center !important;
+                                                }
+                                                .text-left{
+                                                    text-align:left !important;
+                                                }
+                                                .text-right{
+                                                    text-align:right !important;
+                                                }
 
-                                        </style>
+                                            </style>
 
-                                                <div class="panel panel-default" id="print-preview">
-                                                    <div class="panel-heading"> 
-                                                        <span class="no-print">FROM</span> 
-                                                        <input type="date" class="form-controls no-print" id="start" value="<?= date('Y-m-d') ?>"> 
-                                                        <span class="no-print">TO</span>
-                                                        <input type="date" class="form-controls no-print" id="end" value="<?= date('Y-m-d') ?>">  
-                                                        <button type="button"  id="find-summarySoldItems" class="btn btn-sm btn-primary no-print">Find</button>
-                                                        <button type="button"  id="find-summarySoldItems-today" class="btn btn-sm btn-success no-print">Today</button>
-                                                        
-                                                        <button type="button"  id="print-summarySoldItems" class="btn btn-sm btn-default no-print">Print</button>
+                                                    <div class="panel panel-default" id="print-preview">
+                                                        <div class="panel-heading"> 
+                                                            <span class="no-print">FROM</span> 
+                                                            <input type="date" class="form-controls no-print" id="start" value="<?= date('Y-m-d') ?>"> 
+                                                            <span class="no-print">TO</span>
+                                                            <input type="date" class="form-controls no-print" id="end" value="<?= date('Y-m-d') ?>">  
+                                                            <button type="button"  id="find-summarySoldItems" class="btn btn-sm btn-primary no-print">Find</button>
+                                                            <button type="button"  id="find-summarySoldItems-today" class="btn btn-sm btn-success no-print">Today</button>
+                                                            
+                                                            <button type="button"  id="print-summarySoldItems" class="btn btn-sm btn-default no-print">Print</button>
+                                                        </div>
+                                                        <div class="panel-body">
+                                                                <div class="containers">
+                                                                    <table class="" style="width: 50%;">
+                                                                        <tr>
+                                                                            <td><p style="float:right !important"><img src="images/log.png" alt=""></p></td>
+                                                                            <td>
+                                                                            <h4 style="text-align:center !important;">
+                                                                                KING SUN ENTERPRISES <br> 
+                                                                                049 Corrales Ave., cor. Domingo Velez St.<br> 
+                                                                                Cagayan de Oro City, Mis. Or. Philippines <br>
+                                                                                Cell No. 0922-872-6189 <br> 
+                                                                                NEMIA LAO SING - Prop.<br>
+                                                                                VAT REG. TIN: 180-808-484-00000 <br> 
+                                                                            </h4>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+
+                                                        </div>
+                                                        <div><span class="no-print">DATE:</span> (<span id="start-span"></span> - <span id="end-span"></span>)</div>
+                                                        <table class="table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th class="text-left">Product name</th>
+                                                                <th class="text-left">Price per item</th>
+                                                                <th class="text-left">Sold item</th>
+                                                                <th class="text-left">Total price</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody id="summarySoldItems">
+                                                            </tbody>
+                                                        </table>
                                                     </div>
-                                                    <div class="panel-body">
-                                                            <div class="containers">
-                                                                <table class="" style="width: 50%;">
-                                                                    <tr>
-                                                                        <td><p style="float:right !important"><img src="images/log.png" alt=""></p></td>
-                                                                        <td>
-                                                                        <h4 style="text-align:center !important;">
-                                                                            KINGSUN ENTERPRISES <br> 
-                                                                            CORRALES STREET CORNER, DOMINGO VELEZ St,<br> 
-                                                                            CAGAYAN DE ORO <br> 
-                                                                            kingsunenterprices@gmail.com <br>
-                                                                            09312-3123-123
-                                                                        </h4>
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </div>
-
-                                                    </div>
-                                                    <div><span class="no-print">DATE:</span> (<span id="start-span"></span> - <span id="end-span"></span>)</div>
-                                                    <table class="table">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th class="text-left">Prodoct name</th>
-                                                            <th class="text-left">Price per item</th>
-                                                            <th class="text-left">Sold item</th>
-                                                            <th class="text-left">Total price</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody id="summarySoldItems">
-                                                        </tbody>
-                                                    </table>
-                                                </div>
 
 
-							</div>
-						</div>
-					</div>					
-				</div>
-			</div>
+                                </div>
+                            </div>
+                        </div>					
+                    </div>
+                </div>
+            </div>
 		</div>
 	</div>
 

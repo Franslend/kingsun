@@ -70,6 +70,7 @@
 												<th>First Name</th>
 												<th>Last Name</th>
 												<th>Role</th>
+												<th>Expertise</th>
 												<th>Email</th>
 												<th>Created At</th>
 												<th>Updated At</th>
@@ -83,6 +84,7 @@
 													<td class="firstName"><?= $user['first_name'] ?></td>
 													<td class="lastName"><?= $user['last_name'] ?></td>
 													<td class="role"><?= $user['role'] ?></td>
+													<td class="expertise"><?= $user['expertise'] ?></td>
 													<td class="email"><?= $user['email'] ?></td>
 													<td><?= date('M d,Y @ h:i:s A', strtotime($user['created_at'])) ?></td>
 													<td><?= date('M d,Y @ h:i:s A', strtotime($user['updated_at'])) ?></td>
@@ -176,6 +178,7 @@
 					firstName = targetElement.closest('tr').querySelector('td.firstName').innerHTML;
 					lastName = targetElement.closest('tr').querySelector('td.lastName').innerHTML;
 					role = targetElement.closest('tr').querySelector('td.role').innerHTML;
+					expertise = targetElement.closest('tr').querySelector('td.expertise').innerHTML;
 					email = targetElement.closest('tr').querySelector('td.email').innerHTML;
 					userId = targetElement.dataset.userid;
 
@@ -198,6 +201,10 @@
 									<option value="employee">Employee</option>\
 								</select>\
 							</div>\
+							<div class="form-group">\
+								<label for="expertise">Expertise</label>\
+								<select type="text" class="form-control" id="expertise" name="expertise" required="">\
+							</div>\
 						  <div class="form-group">\
 						    <label for="email">Email address:</label>\
 						    <input type="email" class="form-control" id="emailUpdate" value="'+ email +'">\
@@ -212,6 +219,7 @@
 										f_name: document.getElementById('firstName').value,
 										l_name: document.getElementById('lastName').value,
 										role: document.getElementById('role').value,
+										expertise: document.getElementById('expertise').value,
 										email: document.getElementById('emailUpdate').value,
 									},
 									url: 'database/update-user.php',

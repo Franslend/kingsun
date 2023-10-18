@@ -6,9 +6,11 @@
 	<script src="https://kit.fontawesome.com/8bf423e820.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="css/fontawesome/css/all.min.css">
 <div class="dashboard_sidebar" id="dashboard_sidebar">
-	<h3 class="dashboard_logo" id="dashboard_logo">KingSun Ent.</h3>
-	<div class="dashboard_sidebar_user">
+	<div class="jayann_logo">
 		<img src="images/user/log.png" alt="User image." id="userImage" />
+	</div>
+	<h3 class="dashboard_logo" id="dashboard_logo">KING SUN ENT.</h3>
+	<div class="dashboard_sidebar_user">
 		<span><?= $user['first_name'] . ' ' . $user['last_name'] ?></span>
 		<br>
 		<span><?= $user['role'] ?></span>
@@ -81,7 +83,7 @@
 				</ul>
 			</li>
 			<li class="liMainMenu">
-				<a href="./history.php" ><i class="fas fa-history"></i> <span class="menuText">History</span></a>
+				<a href="./history.php" ><i class="fas fa-history"></i> <span class="menuText">History Bin</span></a>
 			</li>
 		</ul>
 	</div>

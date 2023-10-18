@@ -90,8 +90,8 @@
 
 		$response = [
 			'success' => true,
-			'message' => 'Successfully added to the system.'
-		];
+			'message' => ' The New added User can now access the system as a ' . $user['role'] . '.'
+		];			
 	} catch (PDOException $e) {
 		$response = [
 			'success' => false,

@@ -23,86 +23,85 @@
 	<script src="https://kit.fontawesome.com/8bf423e820.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<style>
-
-
-	</style>
 	<div id="dashboardMainContainer">
 		<?php include('partials/app-sidebar.php') ?>
 		<div class="dasboard_content_container" id="dasboard_content_container">
-			<?php include('partials/app-topnav.php') ?>
-			<div class="dashboard_content">
-				<div class="dashboard_content_main">
-					<div class="co150" style="margin:3px;">
-						<br>
-						<form action="dashboard.php" method="get">
-						<label for="">YEAR FILTER</label>
-						<div class="row">
-							<div class="col-md-10">
-								<select name="date" id="" class="form-control" style="margin-bottom: 1px; margin-top: 3px">
-									<option value="" disabled selected>-Select-</option>
-									<option value="2020" <?=  isset($_GET['date']) && $_GET['date'] == '2020' ? 'selected' : '' ?>>2020</option>
-									<option value="2021" <?=  isset($_GET['date']) && $_GET['date'] == '2021' ? 'selected' : '' ?>>2021</option>
-									<option value="2022" <?=  isset($_GET['date']) && $_GET['date'] == '2022' ? 'selected' : '' ?>>2022</option>
-									<option value="2023" <?=  isset($_GET['date']) && $_GET['date'] == '2023' ? 'selected' : '' ?>>2023</option>
-									<option value="2024" <?=  isset($_GET['date']) && $_GET['date'] == '2024' ? 'selected' : '' ?>>2024</option>
-									<option value="2025" <?=  isset($_GET['date']) && $_GET['date'] == '2025' ? 'selected' : '' ?>>2025</option>
-								</select>
-							</div>
-							<div class="col-md-2"><button class="btn btn-primary" type="submit">Find</button></div>
-						</div>
-						</form>
-						
-						<figure class="highcharts-figure">
-							<div id="container"></div>
-						</figure>
-					</div>
-					<div class="co150" style="margin:3px;">
-					<br>
+				<div id="dashboardContent">
+				<?php include('partials/app-topnav.php') ?>
+					<div class="dashboard_content">
+					<div class="column column-12" style="height: 623px; overflow: auto;">
+						<div class="dashboard_content_main">
+							<div class="co150" style="margin:3px;">
+								<br>
 								<form action="dashboard.php" method="get">
-									<label for="">Monthly</label>
-									<div class="row">
-										<div class="col-md-3">
-											<div class="input-group">
-												<input type="month" value = "<?= isset($_GET['sale_overview']) ? $_GET['sale_overview'] : '' ?>" class="form-control" name="sale_overview" style="margin-bottom: 1px; margin-top: 3px; margin-left:10px">
-												<span class="input-group-btn">
-													<button class="btn btn-primary" type="submit">Find</button>
-												</span>
-											</div><!-- /input-group -->
-										</div>
+								<label for="">YEAR FILTER</label>
+								<div class="row">
+									<div class="col-md-10">
+										<select name="date" id="" class="form-control" style="margin-bottom: 1px; margin-top: 3px">
+											<option value="" disabled selected>-Select-</option>
+											<option value="2020" <?=  isset($_GET['date']) && $_GET['date'] == '2020' ? 'selected' : '' ?>>2020</option>
+											<option value="2021" <?=  isset($_GET['date']) && $_GET['date'] == '2021' ? 'selected' : '' ?>>2021</option>
+											<option value="2022" <?=  isset($_GET['date']) && $_GET['date'] == '2022' ? 'selected' : '' ?>>2022</option>
+											<option value="2023" <?=  isset($_GET['date']) && $_GET['date'] == '2023' ? 'selected' : '' ?>>2023</option>
+											<option value="2024" <?=  isset($_GET['date']) && $_GET['date'] == '2024' ? 'selected' : '' ?>>2024</option>
+											<option value="2025" <?=  isset($_GET['date']) && $_GET['date'] == '2025' ? 'selected' : '' ?>>2025</option>
+										</select>
 									</div>
+									<div class="col-md-2"><button class="btn btn-primary" type="submit">Find</button></div>
+								</div>
 								</form>
-						
-						<div id="deliveryHistory"></div>				
-					</div>
-				</div>
-					<br>
-					<div class="dashboard_content_main">
-						<div class="row" style="margin-bottom: 1px; margin-top: 20px">
-							<div class="col-md-12">
-
-								<label for="">
-									BEST SALES OVERVIEW 
-								</label> 
-								<form action="dashboard.php" method="get">
-									<div class="row">
-										<div class="col-md-3">
-											<div class="input-group">
-												<input type="month" value = "<?= isset($_GET['best_sale']) ? $_GET['best_sale'] : '' ?>" class="form-control" name="best_sale" style="margin-bottom: 1px; margin-top: 0px">
-												<span class="input-group-btn">
-													<button class="btn btn-primary" type="submit">Find</button>
-												</span>
-											</div><!-- /input-group -->
-										</div>
-									</div>
-								</form>
-								<figure class="highcharts-figure" style="max-width:2000px;">
-									<div id="containerv2"></div>
+								
+								<figure class="highcharts-figure">
+									<div id="container"></div>
 								</figure>
 							</div>
+							<div class="co150" style="margin:3px;">
+							<br>
+										<form action="dashboard.php" method="get">
+											<label for="">Monthly</label>
+											<div class="row">
+												<div class="col-md-3">
+													<div class="input-group">
+														<input type="month" value = "<?= isset($_GET['sale_overview']) ? $_GET['sale_overview'] : '' ?>" class="form-control" name="sale_overview" style="margin-bottom: 1px; margin-top: 3px; margin-left:10px">
+														<span class="input-group-btn">
+															<button class="btn btn-primary" type="submit">Find</button>
+														</span>
+													</div><!-- /input-group -->
+												</div>
+											</div>
+										</form>
+								
+								<div id="deliveryHistory"></div>				
+							</div>
+						</div>
+							<br>
+							<div class="dashboard_content_main">
+								<div class="row" style="margin-bottom: 1px; margin-top: 20px">
+									<div class="col-md-12">
+
+										<label for="">
+											BEST SALES OVERVIEW 
+										</label> 
+										<form action="dashboard.php" method="get">
+											<div class="row">
+												<div class="col-md-3">
+													<div class="input-group">
+														<input type="month" value = "<?= isset($_GET['best_sale']) ? $_GET['best_sale'] : '' ?>" class="form-control" name="best_sale" style="margin-bottom: 1px; margin-top: 0px">
+														<span class="input-group-btn">
+															<button class="btn btn-primary" type="submit">Find</button>
+														</span>
+													</div><!-- /input-group -->
+												</div>
+											</div>
+										</form>
+										<figure class="highcharts-figure" style="max-width:2000px;">
+											<div id="containerv2"></div>
+										</figure>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>			
 		</div>
@@ -174,7 +173,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Delivery Histories</h4>
+        <h4 class="modal-title" id="myModalLabel">Transaction Histories</h4>
       </div>
       <div class="modal-body">
           <table id="cartItems2" class="cart-items2">
@@ -387,14 +386,14 @@ Highcharts.chart('containerv2', {
         type: 'bar'
     },
     title: {
-        text: 'TOP 10 BEST SELLING PRODUCT FOR THIS MONTH OF JANUARY',
+        text: 'TOP 10 BEST SELLING PRODUCT FOR THIS MONTH ',
         align: 'left',
 		style: {
                 	fontSize: '20px' // Custom font size for y-axis title
             	}
     },
     xAxis: {
-		categories: <?= json_encode($productFetch) ?>,
+		categories: <?php echo json_encode($productFetch) ?> ,
         title: {
             text: null,
             style: {
@@ -427,7 +426,7 @@ Highcharts.chart('containerv2', {
         gridLineWidth: 0
     },
     tooltip: {
-        valueSuffix: ' Pesos',
+        valueSuffix: ' pcs',
 		style: {
             fontSize: '20px' // Custom font size for tooltip
         }
@@ -463,10 +462,9 @@ Highcharts.chart('containerv2', {
         enabled: false
     },
     // series: [{
-    //     name: 'Year 1990',
-    //     data: [631, 727, 3202, 721]
+    //     data: [307500,103600,45500,35000,35000,35000,35000,33600,30000,1728]
     // }]
-	series: [{ data: <?= json_encode($total) ?> }]
+	series: [{ data: <?php echo json_encode($total_new) ?> }]
 });
 
 

@@ -1,0 +1,85 @@
+nav.mt-2 ul.nav-sidebar li a:hover{
+	background-color:  rgba(242,175,88,0.5) !important;
+}
+
+.bg-1{
+	background-color: rgba(20,143,119);
+}
+.bg-2{
+	background-color: rgba(241,196,15);
+}
+.bg-3{
+	background-color: rgba(253,132,105);
+}
+
+.brand-link
+{
+	margin-top: -55px;
+}
+
+.info{
+	font-size: 13px !important;
+	letter-spacing: 0.0625em;
+	margin:-5px;
+}
+.error {
+	background: #F2DEDE;
+	color: #A94442;
+	padding: 10px;
+	width: 95%;
+	border-radius: 5px;
+	margin: 20px auto;
+ }
+
+@media print {
+   .report-header {
+      display: none;
+   }
+}
+
+.fullscreen .wrapper {
+    height: 100vh;
+}
+
+.fullscreen .main-header {
+    display: none;
+}
+
+.fullscreen .content-wrapper {
+    margin-left: 0;
+}
+
+.fullscreen .content-header {
+    display: none;
+}
+
+.fullscreen .content {
+    padding-top: 0;
+}
+
+.btn-red {
+	background-color: red;
+	color: white;
+ }
+ 
+
+
+ body {
+	background-image: url('asset/img/apthecare.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+  }
+  
+
+  .input-with-peso {
+    position: relative;
+}
+
+.peso-symbol {
+    position: absolute;
+    left: 10px; /* Adjust the left position as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px; /* Adjust the font size as needed */
+}
+

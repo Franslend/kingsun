@@ -62,6 +62,8 @@ session_start();
         ];
     }
  }
+
+/* Encrypt pass */ 
  function decryptData($encryptedData) {
     $key = '@DWSsadSdw2';
     $iv = '1234567890123456';
@@ -334,12 +336,16 @@ if (isset($viewAddEditDelete)) {
             $product3 = fetchItem($table3);
 
             if ($product['res_count'] > 0) {
-                $categories = ['Freon', 'Evaporator', 'Compressor', 'Capacitor', 'Dryer', 'Rubber Insolation Tube', 'Cabin Filter', 'Resistor Block', 'Others'];
+                $categories = ['Cabin Filter', 'Capacitor', 'Compressor', 'Compressor Parts', 'Copper Tube', 'Dryer', 'Engine Filter', 'Evaporator', 'Refrigerant', 'Refrigerant Oil', 'Resistor Block', 'Rod', 'Rubber Insulation Tube', 'Others'];
                 foreach ($product['res'] as $key => $value) {
                     $output .= '<div class="row">
                                     <div class="col-md-12">
                                         <label class="form-label">Item Code</label>
                                         <input type="text" class="form-control" name="item_code" value="'.$value['item_code'].'" required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="form-label">Location</label>
+                                        <input type="text" class="form-control" name="p_location" value="'.$value['p_location'].'" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Product name</label>
@@ -608,6 +614,7 @@ if (isset($updateProduct)) {
             'product_name' => $product_name,
             'category' => $category,
             'stocks' => $stocks,
+            'p_location' => $p_location,
             'price' => $price,
             'img' => $value,
             'description' => $description,
@@ -620,6 +627,7 @@ if (isset($updateProduct)) {
             'product_name' => $product_name,
             'category' => $category,
             'stocks' => $stocks,
+            'p_location' => $p_location,
             'price' => $price,
             'description' => $description,
             'updated_at' => date('Y-m-d H:i:s'),
@@ -849,6 +857,8 @@ if (isset($customerReceipt)) {
 
     echo json_encode($response);
 }
+
+/*Notification */
 if (isset($notification)) {
     if ($notification == 'readProudct') {
         //$new_status = $stocks <= 5 ? 1 : 0; dari

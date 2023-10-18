@@ -6,7 +6,7 @@
 	// Get all products.
 	$show_table = 'products';
 	$products = include('database/show.php');
-	$categories = ['Freon', 'Evaporator', 'Compressor', 'Capacitor', 'Dryer', 'Rubber Insolation', 'Cabin Filter', 'Resistor Block', 'Others'];
+	$categories = ['Freon', 'Evaporator', 'Compressor', 'Compressor Parts', 'Capacitor', 'Dryer', 'Rubber Insulation Tube', 'Cabin Filter', 'Resistor Block', 'Others'];
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,5 +1,6 @@
 <?php 
 
+$s_tin = isset($_POST['s_tin']) ? $_POST['s_tin'] : '';
 $supplier_name = isset($_POST['supplier_name']) ? $_POST['supplier_name'] : '';
 $supplier_location = isset($_POST['supplier_location']) ? $_POST['supplier_location'] : '';
 $email = isset($_POST['email']) ? $_POST['email'] : '';
@@ -12,12 +13,12 @@ $supplier_id = $_POST['sid'];
 try {
 	$sql = "UPDATE suppliers 
 				SET 
-				supplier_name = ?, supplier_location = ?, email = ?, c_number = ?
+				s_tin = ?, supplier_name = ?, supplier_location = ?, email = ?, c_number = ?
 				WHERE id=?";
 
 	include('connection.php');
 	$stmt = $conn->prepare($sql);
-	$stmt->execute([$supplier_name, $supplier_location, $email,$c_number, $supplier_id]);
+	$stmt->execute([$s_tin, $supplier_name, $supplier_location, $email,$c_number, $supplier_id]);
 
 	// Delete the old values.
 	$sql = "DELETE FROM productsuppliers WHERE supplier=?";

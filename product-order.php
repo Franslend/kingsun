@@ -8,6 +8,7 @@
 	$show_table = 'products';
 	$products = include('database/show.php');
 	$products = json_encode($products);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,67 +32,68 @@
 	<div id="dashboardMainContainer">
 		<?php include('partials/app-sidebar.php') ?>
 		<div class="dasboard_content_container" id="dasboard_content_container">
-			<?php include('partials/app-topnav.php') ?>
-			<div class="dashboard_content">
-				<div class="dashboard_content_main">		
-					<div class="row">
-						<div class="column column-12">
-							<h1 class="section_header"> Order Product</h1>
-							<div>
-								<form action="database/save-order.php" method="POST">
+			<div id="dashboardContent">
+				<?php include('partials/app-topnav.php') ?>
+				<div class="dashboard_content">
+					<div class="dashboard_content_main">		
+						<div class="row">
+							<div class="column column-12" style="height: 596px; overflow: auto;">
+								<h1 class="section_header"> Create Order</h1>
+								<div>
+									<form action="database/save-order.php" method="POST">
 
-									<div class="alignRight" id="testawdawd">
-										<button type="button" class="orderBtn orderProductBtn" id="orderProductBtn">Add Another Product</button>
-										<!-- <button type="button" class="orderBtn test1" id="test1">with search</button> -->
-									</div>
-
-									<div id="appendHere">
-										<div class="orderProductRow">
-											<div id="parent_id">
-												<label for="product_name">PRODUCT NAME</label>				
-												<select name="products[]" class="productNameSelect" id="product_name_0">
-													<option value="">Select Product</option>
-													<option value="19">R404A</option>
-													<option value="18">R134A</option>
-													<option value="17">Insolatiosn Tubess</option>
-													<option value="16">Fiber Glass</option>
-													<option value="15">Refregenrant oil</option>
-													<option value="14">Compressor</option>
-													<option value="13">Silver Rod</option>
-													<option value="11">R22 Freon</option>
-												</select>
-												<button type="button" class="d-none appbtn removeOrderBtn">Remove</button>		    
-											</div>
-											<div class="suppliersRows" id="supplierRows_0" data-counter="0"></div>
+										<div class="alignRight" id="testawdawd">
+											<button type="button" class="orderBtn orderProductBtn" id="orderProductBtn">Add Another Product</button>
+											<!-- <button type="button" class="orderBtn test1" id="test1">with search</button> -->
 										</div>
-									</div>	
 
-									<div class="alignRight marginTop20">
-										<button type="submit" class="orderBtn submitOrderProductBtn">Submit Order</button>
-									</div>
-								</form>
-							</div>
-							<?php 
-									if(isset($_SESSION['response'])){
-										$response_message = $_SESSION['response']['message'];
-										$is_success = $_SESSION['response']['success'];
-								?>
-									<div class="responseMessage">
-										<p class="responseMessage <?= $is_success ? 'responseMessage__success' : 'responseMessage__error' ?>" >
-											<?= $response_message ?>
-										</p>
-									</div>
-							<?php unset($_SESSION['response']); }  ?>
+										<div id="appendHere">
+											<div class="orderProductRow">
+												<div id="parent_id">
+													<label for="product_name">PRODUCT NAME</label>				
+													<select name="products[]" class="productNameSelect" id="product_name_0">
+														<option value="">Select Product</option>
+													<?php 
+													$stmt = $conn->prepare("SELECT * FROM products where deleted = 0");
+													$stmt->execute();
+													$stmt->setFetchMode(PDO::FETCH_ASSOC);
+													$res = $stmt->fetchAll();
+													foreach($res as $key => $value){ ?>
+														<option value="<?= $value['id'] ?>"><?= $value['product_name'] ?></option>
+													<?php } ?>
+													</select>
+													<button type="button" class="d-none appbtn removeOrderBtn">Remove</button>		    
+												</div>
+												<div class="suppliersRows" id="supplierRows_0" data-counter="0"></div>
+											</div>
+										</div>	
 
-						</div>	
-										
+										<div class="alignRight marginTop20">
+											<button type="submit" class="orderBtn submitOrderProductBtn">Submit Order</button>
+										</div>
+									</form>
+								</div>
+								<?php 
+										if(isset($_SESSION['response'])){
+											$response_message = $_SESSION['response']['message'];
+											$is_success = $_SESSION['response']['success'];
+									?>
+										<div class="responseMessage">
+											<p class="responseMessage <?= $is_success ? 'responseMessage__success' : 'responseMessage__error' ?>" >
+												<?= $response_message ?>
+											</p>
+										</div>
+								<?php unset($_SESSION['response']); }  ?>
+
+							</div>					
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<script src="js/script.js?v=<?= time(); ?>"></script>
-	<!-- <?php include('partials/app-scripts.php'); ?> -->
+	<?php include('partials/app-scripts.php'); ?> 
 	<!-- for select search -->
 	<!-- for select search -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -256,6 +258,9 @@ $(document).on('click', '#orderProductBtn', function () {
 	$('#supplierRows_' + ticket).html('');
 	$('#input-set-' + ticket).select2();
 	ticket++;
+
+	// Initialize Select2 on the new select element
+	$('#input-set-' + ticket).select2();
 });
 
 $('#product_name_0').select2();

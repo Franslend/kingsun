@@ -83,7 +83,7 @@ let curNav = document.querySelector('a[href="./'+ curFile +'"]');
 curNav.classList.add('subMenuActive');
 
 let mainNav = curNav.closest('li.liMainMenu');
-mainNav.style.background = '#f685a1';
+mainNav.style.background = '#337Ab7';
 
 let subMenu = curNav.closest('.subMenus');
 let mainMenuIcon = mainNav.querySelector('i.mainMenuIconArrow');

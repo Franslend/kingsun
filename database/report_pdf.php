@@ -67,19 +67,20 @@
 
     $type = $_GET['report'];
     // $report_headers = [
-    //     'product' => 'KINGSUN ENTERPRISES'."\n".'CORRALES STREET CORNER, DOMINGO VELEZ St,'."\n".' CAGAYAN DE ORO'."\n".' kingsunenterprices@gmail.com',
+    //     'product' => 'KING SUN ENTERPRISES'."\n".'049 Corrales Ave., cor. Domingo Velez St.,'."\n".' Cagayan de Oro City, Mis. Or. Philippines'."\n".' Cell No. 0922-872-6189'."\n".'NEMIA LAO SING - Prop.'."\n".'VAT REG. TIN: 180-808-484-00000.',
     //     'supplier' => 'Supplier Report',
     //     'delivery' => 'Delivery Report',
     //     'purchase_orders' => 'Purchase Order Report'
     // ];
     $report_headers = [
-        'product' => 'KINGSUN ENTERPRISES'."\n".'CORRALES STREET CORNER, DOMINGO VELEZ St,'."\n".' CAGAYAN DE ORO'."\n".' kingsunenterprices@gmail.com',
-        'supplier' => 'KINGSUN ENTERPRISES'."\n".'CORRALES STREET CORNER, DOMINGO VELEZ St,'."\n".' CAGAYAN DE ORO'."\n".' kingsunenterprices@gmail.com',
-        'delivery' => 'KINGSUN ENTERPRISES'."\n".'CORRALES STREET CORNER, DOMINGO VELEZ St,'."\n".' CAGAYAN DE ORO'."\n".' kingsunenterprices@gmail.com',
-        'purchase_orders' => 'KINGSUN ENTERPRISES'."\n".'CORRALES STREET CORNER, DOMINGO VELEZ St,'."\n".' CAGAYAN DE ORO'."\n".' kingsunenterprices@gmail.com',
-        'collect_receipts' => 'KINGSUN ENTERPRISES'."\n".'CORRALES STREET CORNER, DOMINGO VELEZ St,'."\n".' CAGAYAN DE ORO'."\n".' kingsunenterprices@gmail.com'
+        'product' => 'KING SUN ENTERPRISES'."\n".'049 Corrales Ave., cor. Domingo Velez St.,'."\n".' Cagayan de Oro City, Mis. Or. Philippines'."\n".' Cell No. 0922-872-6189'."\n".'NEMIA LAO SING - Prop.'."\n".'VAT REG. TIN: 180-808-484-00000.',
+        'supplier' => 'KING SUN ENTERPRISES'."\n".'049 Corrales Ave., cor. Domingo Velez St.,'."\n".' Cagayan de Oro City, Mis. Or. Philippines'."\n".' Cell No. 0922-872-6189'."\n".'NEMIA LAO SING - Prop.'."\n".'VAT REG. TIN: 180-808-484-00000.',
+        'delivery' => 'KING SUN ENTERPRISES'."\n".'049 Corrales Ave., cor. Domingo Velez St.,'."\n".' Cagayan de Oro City, Mis. Or. Philippines'."\n".' Cell No. 0922-872-6189'."\n".'NEMIA LAO SING - Prop.'."\n".'VAT REG. TIN: 180-808-484-00000.',
+        'purchase_orders' => 'KING SUN ENTERPRISES'."\n".'049 Corrales Ave., cor. Domingo Velez St.,'."\n".' Cagayan de Oro City, Mis. Or. Philippines'."\n".' Cell No. 0922-872-6189'."\n".'NEMIA LAO SING - Prop.'."\n".'VAT REG. TIN: 180-808-484-00000.',
+        'employee' => 'KING SUN ENTERPRISES'."\n".'049 Corrales Ave., cor. Domingo Velez St.,'."\n".' Cagayan de Oro City, Mis. Or. Philippines'."\n".' Cell No. 0922-872-6189'."\n".'NEMIA LAO SING - Prop.'."\n".'VAT REG. TIN: 180-808-484-00000.',
+        'collect_receipts' => 'KING SUN ENTERPRISES'."\n".'049 Corrales Ave., cor. Domingo Velez St.,'."\n".' Cagayan de Oro City, Mis. Or. Philippines'."\n".' Cell No. 0922-872-6189'."\n".'NEMIA LAO SING - Prop.'."\n".'VAT REG. TIN: 180-808-484-00000.'
     ];
-    $row_height = 38;
+    $row_height = 18;
 
     // Pull data from database.
     include('connection.php');
@@ -96,10 +97,10 @@
                 'width' => 30
             ],
             'product_name' => [
-                'width' => 35
+                'width' => 55
             ],
             'category' => [
-                'width' => 28
+                'width' => 35
             ],
             'stocks' => [
                 'width' => 15
@@ -108,13 +109,13 @@
                 'width' => 15
             ],
             'created_by' => [
-                'width' => 40
+                'width' => 22
             ],
             'created_at' => [
-                'width' => 45
+                'width' => 40
             ],
             'updated_at' => [
-                'width' => 45
+                'width' => 40
             ]
         ];
     
@@ -190,11 +191,11 @@
                 ],
                 'created_at' => [
                     'content' => date('M d,Y h:i:s A', strtotime($product['created_at'])),
-                    'align' => 'L'
+                    'align' => 'C'
                 ],
                 'updated_at' => [
                     'content' => date('M d,Y h:i:s A', strtotime($product['updated_at'])),
-                    'align' => 'L'
+                    'align' => 'C'
                 ]
             ];
         }
@@ -204,7 +205,7 @@
 
 // Supplier Export
 if ($type === 'supplier') {
-    $stmt = $conn->prepare("SELECT suppliers.id as sid, suppliers.created_at as 'created at', users.first_name, users.last_name, suppliers.supplier_location,suppliers.c_number, suppliers.email, suppliers.created_by FROM suppliers INNER JOIN users ON suppliers.created_by = users.id ORDER BY suppliers.created_at DESC");
+    $stmt = $conn->prepare("SELECT suppliers.id as sid, suppliers.supplier_name as 'supplier_name', users.first_name, users.last_name, suppliers.supplier_location, suppliers.s_tin, suppliers.c_number, suppliers.email, suppliers.created_by, suppliers.created_at FROM suppliers INNER JOIN users ON suppliers.created_by = users.id ORDER BY suppliers.created_at DESC");
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
@@ -215,20 +216,26 @@ if ($type === 'supplier') {
         'supplier_id' => [
             'width' => 30
         ],
-        'created_at' => [
-            'width' => 40
+        's_tin' => [
+            'width' => 55
+        ], 
+        'supplier_name' => [
+            'width' => 55
         ], 
         'supplier_location' => [
             'width' => 50
         ],
         'c_number' => [
-            'width' => 50
+            'width' => 25
         ],
         'email' => [
             'width' => 50
         ],
         'created_by' => [
-            'width' => 50
+            'width' => 25
+        ],
+        'created_at' => [
+            'width' => 40
         ]
     ];
 
@@ -240,8 +247,12 @@ if ($type === 'supplier') {
                 'content' => $supplier['sid'],
                 'align' => 'C'
             ],
-            'created_at' => [
-                'content' => $supplier['created at'],
+            's_tin' => [
+                'content' => $supplier['s_tin'],
+                'align' => 'C'
+            ], 
+            'supplier_name' => [
+                'content' => $supplier['supplier_name'],
                 'align' => 'C'
             ], 
             'supplier_location' => [
@@ -258,6 +269,10 @@ if ($type === 'supplier') {
             ],
             'created_by' => [
                 'content' => $supplier['created_by'],
+                'align' => 'C'
+            ],
+            'created_at' => [
+                'content' => $supplier['created_at'],
                 'align' => 'C'
             ]
         ];
@@ -463,6 +478,86 @@ if ($type === 'purchase_orders') {
     }
     $row_height = 10;
 }
+
+
+
+// Employee Export
+if ($type === 'employee') {
+    $stmt = $conn->prepare("SELECT id, employee_id, first_name, last_name, role, expertise, email, c_number, created_at FROM users");
+    $stmt->execute();
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+    $employees = $stmt->fetchAll();
+
+    // Column headings
+    $headers = [
+        'Employee ID' => [
+            'width' => 25
+        ],
+        'First Name' => [
+            'width' => 30
+        ], 
+        'Last Name' => [
+            'width' => 30
+        ],
+        'Role' => [
+            'width' => 25
+        ],
+        'Expertise' => [
+            'width' => 30
+        ],
+        'Email' => [
+            'width' => 40
+        ],
+        'Contact Number' => [
+            'width' => 40
+        ],
+        'Created At' => [
+            'width' => 40
+        ]
+    ];
+
+    foreach ($employees as $employee) {
+        $data[] = [
+            'Employee ID' => [
+                'content' => $employee['employee_id'],
+                'align' => 'C'
+            ],
+            'First Name' => [
+                'content' => $employee['first_name'],
+                'align' => 'C'
+            ], 
+            'Last Name' => [
+                'content' => $employee['last_name'],
+                'align' => 'C'
+            ],
+            'Role' => [
+                'content' => $employee['role'],
+                'align' => 'C'
+            ],
+            'Expertise' => [
+                'content' => $employee['expertise'],
+                'align' => 'C'
+            ],
+            'Email' => [
+                'content' => $employee['email'],
+                'align' => 'C'
+            ],
+            'Contact Number' => [
+                'content' => $employee['c_number'],
+                'align' => 'C'
+            ],
+            'Created At' => [
+                'content' => date('M d, Y', strtotime($employee['created_at'])),
+                'align' => 'C'
+            ]
+        ];
+    }
+
+    $row_height = 10;
+}
+
+
 if ($type == 'collect_receipts') {
     $stmt = $conn->prepare("SELECT *, date(a.date_order) as date FROM tbl_cart a
     LEFT JOIN products b ON a.product_id = b.id

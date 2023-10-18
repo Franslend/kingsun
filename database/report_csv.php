@@ -6,7 +6,8 @@
         'supplier' => 'Supplier Report',
         'product' => 'Product Report',
         'purchase_orders' => 'Purchase Order',
-        'delivery' => 'Delivery Report'
+        'delivery' => 'Delivery Report',
+        'employee' => 'Employee Data'
     ];
 
     $file_name = $mapping_filenames[$type] . '.xls';
@@ -180,6 +181,37 @@
 
                 echo implode("\t", $delivery) . "\n";
             }
+        }
+    }
+
+
+    //Employee Data
+    if ($type === 'employee') {
+        $stmt = $conn->prepare("SELECT * FROM users ORDER BY created_at DESC");
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+        $employees = $stmt->fetchAll();
+
+        $is_header = true;
+        foreach ($employees as $employee) {
+            // Remove sensitive information if needed.
+            unset($employee['password'], $employee['email']);
+
+            if ($is_header) {
+                $row = array_keys($employee);
+                $is_header = false;
+                echo implode("\t", $row) . "\n";
+            }
+
+            // Detect double-quotes and escape any value that contains them.
+            array_walk($employee, function (&$str) {
+                $str = preg_replace("/\t/", "\\t", $str);
+                $str = preg_replace("/\r?\n/", "\\n", $str);
+                if (strstr($str, '"')) $str = '"' . str_replace('"', '""', $str) . '"';
+            });
+
+            echo implode("\t", $employee) . "\n";
         }
     }
 ?>

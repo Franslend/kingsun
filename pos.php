@@ -1,6 +1,6 @@
 <?php
 include('fetchProduct.php');
-  $categories = ['Freon', 'Evaporator', 'Compressor', 'Capacitor', 'Dryer', 'Rubber Insolation', 'Cabin Filter', 'Resistor Block', 'Others'];
+  $categories = ['Cabin Filter', 'Capacitor', 'Compressor', 'Compressor Parts', 'Copper Tube', 'Dryer', 'Engine Filter', 'Evaporator', 'Refrigerant', 'Refrigerant Oil', 'Resistor Block', 'Rod', 'Rubber Insulation Tube', 'Others'];
   $tableName = 'SELECT DISTINCT category FROM products';
   $categories = fetchItem($tableName);
   date_default_timezone_set('Asia/Manila');
@@ -157,6 +157,8 @@ thead th {
         ...
       </div>
       <div class="modal-footer">
+        <!-- Empty space for location fetched from the database -->
+        <div id="p_location"></div>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
@@ -177,11 +179,12 @@ thead th {
                 <div class="col-md-5"><p style="float:right !important"><img src="images/logo2.png" alt=""></p></div>
                 <div class="col-md-5">
                   <h5 style="text-align:center !important;">
-                      KINGSUN ENTERPRISES <br> 
-                      CORRALES STREET CORNER,<br> DOMINGO VELEZ St,<br> 
-                      CAGAYAN DE ORO <br> 
-                      kingsunenterprices@gmail.com <br>
-                      09312-3123-123
+                  KING SUN ENTERPRISES <br> 
+                  049 Corrales Ave., cor. Domingo Velez St.<br> 
+                  Cagayan de Oro City, Mis. Or. Philippines <br>
+                  Cell No. 0922-872-6189 <br> 
+                  NEMIA LAO SING - Prop.<br>
+                  VAT REG. TIN: 180-808-484-00000 <br>
                   </h5>
                 </div>
               </div>
@@ -483,4 +486,11 @@ $(document).on('click', '#printSubmit', function() {
   $('#exampleModal2').modal('hide');
 });
 });
+
+// Fetch location information from the database (you need to implement this part)
+const locationData = fetchLocationFromDatabase();
+
+// Update the content of the locationInfo element
+document.getElementById('p_location').textContent = 'Location: ' + locationData;
+
 </script>
