@@ -62,6 +62,30 @@
 		// Get saved id
 		$product_id = $conn->lastInsertId();
 
+		// Add supplier
+		if($table_name === 'products'){
+			$suppliers = isset($_POST['suppliers']) ? $_POST['suppliers'] : [];
+			if($suppliers){
+				// Loop through the suppliers and add record
+				foreach($suppliers as $supplier){
+					$supplier_data = [
+						'supplier_id' => $supplier,
+						'product_id' => $_POST['id'],
+						'updated_at' => date('Y-m-d H:i:s'),
+						'created_at' => date('Y-m-d H:i:s')
+					];
+
+
+					$sql = "INSERT INTO productsuppliers			
+								(supplier, product, updated_at, created_at) 
+							VALUES 
+								(:supplier_id, :product_id, :updated_at, :created_at)";
+					$stmt = $conn->prepare($sql);
+					$stmt->execute($supplier_data);
+				}
+			}
+		}
+
         $response = [
 			'success' => true,
 			'message' => ' The New product "' . $product['product_name'] . '" has been recorded and saved in the system '

@@ -214,10 +214,10 @@ if ($type === 'supplier') {
     // Column headings - replace from mysql database or hardcode it
     $headers = [
         'supplier_id' => [
-            'width' => 30
+            'width' => 10
         ],
         's_tin' => [
-            'width' => 55
+            'width' => 32
         ], 
         'supplier_name' => [
             'width' => 55
@@ -235,7 +235,7 @@ if ($type === 'supplier') {
             'width' => 25
         ],
         'created_at' => [
-            'width' => 40
+            'width' => 35
         ]
     ];
 

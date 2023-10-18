@@ -282,7 +282,7 @@
 					message: '<form action="database/add.php" method="POST" enctype="multipart/form-data" id="editSupplierForm">\
 						<div class="appFormInputContainer">\
 							<label for="s_tin">VAT REG. TIN</label>\
-							<input type="text" class="appFormInput" placeholder="Enter supplier TIN..." id="s_tin" name="s_tin" required="" >\
+							<input type="text" class="appFormInput" value="'+ supplierDetails.s_tin +'" placeholder="Enter supplier TIN..." id="s_tin" name="s_tin" required="" >\
 						</div>\
 						<div class="appFormInputContainer">\
 							<label for="supplier_name">Supplier Name</label>\
