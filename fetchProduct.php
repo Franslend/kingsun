@@ -172,6 +172,10 @@ if (isset($fetchSelectedProduct)) {
     );
     echo json_encode($response);
 }
+
+
+
+/* Modal POS 
 if (isset($view_img)) {
     $table = 'SELECT * FROM products where id ='.$itemId.'';
     $product = fetchItem($table);
@@ -187,7 +191,41 @@ if (isset($view_img)) {
         'src'=>$output
     );
     echo json_encode($response);
+}*/
+
+
+/* Modal POS Picture */
+if (isset($view_img)) {
+    $table = 'SELECT * FROM products where id =' . $itemId;
+    $product = fetchItem($table);
+
+    $output = '';
+    $total = 0;
+
+    if ($product['res_count'] > 0) {
+        foreach ($product['res'] as $key => $value) {
+            $img = ($value['img'] != null) ? '<img src="uploads/products/' . $value['img'] . '" alt="" width="100%" height="400">' : '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png" alt="" width="100%" height="400">';
+            $output .= $img;
+
+            // Fetch and include p_location
+            $p_location = $value['p_location'];
+        }
+    }
+
+    $response = array(
+        'src' => $output,
+        'p_location' => $p_location // Include p_location in the response
+    );
+
+    echo json_encode($response);
 }
+
+
+
+
+
+
+
 if(isset($fetchSelectedProductDashboard)){
     $output = '';
     $total = 0;

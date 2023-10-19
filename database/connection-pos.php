@@ -9,7 +9,7 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Fetch the desired columns from the products table
-    $query = "SELECT id, product_name, img, category, price, stocks FROM products";// Add the "id" column to the SELECT statement
+    $query = "SELECT id, product_name, img, p_location, category, price, stocks FROM products";// Add the "id" column to the SELECT statement
     $statement = $conn->query($query);
     $products = $statement->fetchAll(PDO::FETCH_ASSOC);
 

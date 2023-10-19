@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 17, 2023 at 12:44 PM
+-- Generation Time: Oct 18, 2023 at 04:34 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -180,8 +180,8 @@ INSERT INTO `products` (`id`, `item_code`, `product_name`, `description`, `categ
 (25, 'COUX-CM', 'Nissan NV350', '', 'Evaporator', NULL, 24, '', 3800, 1, '2023-10-07 05:36:47', '2023-10-07 05:36:47', 0, 0, '2023-10-12 08:01:04', 1),
 (26, 'CRUX-CM ', 'Nissan Frontier', 'The cooled and dehumidified air is then distributed throughout the cars interior using the vehicles ventilation system.', 'Evaporator', 'product-1697509185.jpg', 22, 'Back Storage of the Garage in the 2nd Room on the 1st Floor', 3800, 1, '2023-10-07 05:40:16', '2023-10-17 07:12:04', 0, 0, NULL, 0),
 (27, 'CRXX-2', 'Nissan HIMERA', 'Its primary purpose is to cool and dehumidify the air that circulates within the vehicles interior.', 'Evaporator', 'product-1697508794.jpg', 20, 'Back Storage of the Garage in the 2nd Room on the 1st Floor', 3000, 1, '2023-10-07 05:41:28', '2023-10-17 07:11:51', 0, 0, NULL, 0),
-(28, 'ECXX-EX', 'Toyota Avanza 15', 'This process reduces the humidity level inside the car, making the atmosphere more comfortable and less prone to fogging of windows.', 'Evaporator', 'product-1697508626.jpg', 25, 'Back Storage of the Garage in the 2nd Room on the 1st Floor', 4000, 1, '2023-10-07 05:42:02', '2023-10-17 07:11:40', 0, 0, NULL, 0),
-(29, 'COXX-CM', 'Toyota Rush', 'The evaporator cools the air by utilizing a refrigerant.', 'Evaporator', 'product-1697508480.jpg', 25, 'Back Storage of the Garage in the 2nd Room on the 1st Floor', 4000, 1, '2023-10-07 05:42:47', '2023-10-17 07:11:29', 0, 0, NULL, 0),
+(28, 'ECXX-EX', 'Toyota Avanza 15', 'This process reduces the humidity level inside the car, making the atmosphere more comfortable and less prone to fogging of windows.', 'Evaporator', 'product-1697508626.jpg', 24, 'Back Storage of the Garage in the 2nd Room on the 1st Floor', 4000, 1, '2023-10-07 05:42:02', '2023-10-17 07:11:40', 0, 0, NULL, 0),
+(29, 'COXX-CM', 'Toyota Rush', 'The evaporator cools the air by utilizing a refrigerant.', 'Evaporator', 'product-1697508480.jpg', 24, 'Back Storage of the Garage in the 2nd Room on the 1st Floor', 4000, 1, '2023-10-07 05:42:47', '2023-10-17 07:11:29', 0, 0, NULL, 0),
 (30, 'CNUX-2', 'Toyota Vios 2014', 'It plays a crucial role in cooling, dehumidifying, and improving air quality inside the car to ensure a comfortable and pleasant driving experience for passengers in various weather conditions.', 'Evaporator', 'product-1697508246.jpg', 25, 'Back Storage of the Garage in the 2nd Room on the 1st Floor', 3500, 1, '2023-10-07 05:43:23', '2023-10-17 07:11:17', 0, 0, NULL, 0),
 (31, 'CYXX-Z', 'KIA CARNIVAL', ' It plays a crucial role in cooling, dehumidifying, and improving air quality inside the car to ensure a comfortable and pleasant driving experience for passengers in various weather conditions.', 'Evaporator', 'product-1697096247.jpg', 15, 'Back Storage of the Garage in the 2nd Room on the 1st Floor', 3000, 1, '2023-10-07 05:44:06', '2023-10-17 07:11:01', 0, 0, NULL, 0),
 (32, 'ECXX-EX', 'KIA KC2700 \'16', '', 'Evaporator', NULL, 18, '', 4800, 1, '2023-10-07 05:45:31', '2023-10-07 05:45:31', 0, 0, '2023-10-07 05:46:45', 1),
@@ -323,8 +323,8 @@ INSERT INTO `products` (`id`, `item_code`, `product_name`, `description`, `categ
 (169, 'YF8 ', 'Delica ECX-FPT', 'The purpose of a shaft seal in a car is to prevent the leakage of fluids, such as oil or transmission fluid, from the components where a shaft rotates. It ensures that the fluid stays contained within', 'Others', 'product-1696769105.jpeg', 23, 'Back Shelf Right Corner', 850, 1, '2023-10-08 14:32:52', '2023-10-17 07:03:17', 0, 0, NULL, 0),
 (170, '----', 'ALUMINUM ROD', 'Aluminum rods are commonly used in various parts of a car, such as engine components, suspension systems, or structural elements, due to their lightweight and durable nature.', 'Rod', 'product-1696768560.jpeg', 10, 'Front Under the Counter', 15, 1, '2023-10-08 14:35:19', '2023-10-17 04:22:51', 0, 0, NULL, 0),
 (171, '----', 'SILVER ROD', ' Silver Rod can be used for different purposes in different parts of a vehicle.', 'Rod', 'product-1696768707.jpeg', 30, 'Front Under the Counter', 30, 1, '2023-10-08 14:38:27', '2023-10-17 04:22:42', 0, 0, NULL, 0),
-(172, '----', 'Copper Tube thickness 0.022', 'Copper tubes are commonly used in cars for various purposes, including as part of the cooling system, brake lines, or fuel lines. The specific size, like 0.022, may indicate a particular diameter or t', 'Copper Tube', 'product-1696768930.jpeg', 23, 'Back of the Door in the Other Room on the 1st Floor', 20, 1, '2023-10-08 14:42:10', '2023-10-17 04:31:25', 0, 0, NULL, 0),
-(173, '----', 'copper tube 0.028', 'The specific size, 0.028 inches, could indicate a certain diameter or thickness, but its purpose would depend on its location within the vehicle and the system it is a part of.', 'Copper Tube', 'product-1696769071.jpeg', 20, 'Back of the Door in the Other Room on the 1st Floor', 23, 1, '2023-10-08 14:44:31', '2023-10-17 04:31:13', 0, 0, NULL, 0),
+(172, '----', 'S-1/4 T-0.032', 'Copper tubes are commonly used in cars for various purposes, including as part of the cooling system, brake lines, or fuel lines. The specific size, like 0.022, may indicate a particular diameter or t', 'Copper Tube', 'product-1696768930.jpeg', 14, '1st Storage Room Shelf 2', 1604, 1, '2023-10-08 14:42:10', '2023-10-18 13:16:31', 0, 0, NULL, 0),
+(173, '----', 'S-1/4 T-0.028', 'The specific size, 0.028 inches, could indicate a certain diameter or thickness, but its purpose would depend on its location within the vehicle and the system it is a part of.', 'Copper Tube', 'product-1696769071.jpeg', 20, '1st Storage Room Shelf 2', 1320, 1, '2023-10-08 14:44:31', '2023-10-18 13:15:40', 0, 0, NULL, 0),
 (174, 'CXX ', 'OUTLANDER (MONTERO ENGINE FILTER)', 'The air filter prevents dust, dirt, and other debris from entering the engines combustion chambers. Clean air is essential for efficient combustion and helps protect the engine from damage caused by ', 'Engine Filter', 'product-1696769368.jpeg', 15, 'Back Shelf Right Corner', 600, 1, '2023-10-08 14:49:28', '2023-10-17 07:02:41', 0, 0, NULL, 0),
 (175, 'EXX-Z', 'OUTLANDER (MONTERO)', 'To prevents dust, dirt, and other debris from entering the engines combustion chambers', 'Others', 'product-1696769526.jpeg', 20, 'Back Shelf Right Corner', 600, 1, '2023-10-08 14:52:06', '2023-10-17 07:02:58', 0, 0, NULL, 0),
 (176, 'EX', 'OUTLANDER (PASERO)', 'Allows the engine to receive the optimal air-to-fuel ratio, promoting efficient combustion and, consequently, better fuel efficiency.', 'Others', 'product-1696769773.jpeg', 20, 'Back Shelf Right Corner', 600, 1, '2023-10-08 14:56:13', '2023-10-17 07:00:44', 0, 0, NULL, 0),
@@ -335,7 +335,24 @@ INSERT INTO `products` (`id`, `item_code`, `product_name`, `description`, `categ
 (180, '-----', 'ID-5/8 T-1/2', 'It helps in preventing heat loss and condensation, making it valuable for HVAC and plumbing applications.', 'Rubber Insulation Tube', 'product-1697004213.jpg', 30, 'Back Storage of the Garage in the 1st Room on the 1st Floor', 110, 33, '2023-10-11 06:03:33', '2023-10-17 07:05:15', 0, 0, NULL, 0),
 (181, '-----', 'ID-3/4 T-1/2', 'It is ideal for insulating pipes and tubes to maintain consistent temperatures and energy efficiency.', 'Rubber Insulation Tube', 'product-1697004716.jpg', 30, 'Back Storage of the Garage in the 1st Room on the 1st Floor', 120, 33, '2023-10-11 06:11:56', '2023-10-17 07:05:00', 0, 0, NULL, 0),
 (182, '-----', 'ID-7/8 T-1/2', 'It is designed for insulating pipes and tubes in various applications, providing thermal protection and preventing condensation.', 'Rubber Insulation Tube', 'product-1697005051.png', 30, 'Back Storage of the Garage in the 1st Room on the 1st Floor', 150, 33, '2023-10-11 06:15:27', '2023-10-17 07:04:48', 0, 0, NULL, 0),
-(183, '-----', 'Suniso', 'Refrigerant oil also helps maintain a proper seal in the compressor, preventing the refrigerant gas from leaking out and maintaining system efficiency.', 'Refrigerant Oil', 'product-1697431765.jpg', 24, 'Top Shelf Right corner', 600, 34, '2023-10-16 04:49:25', '2023-10-17 02:59:25', 0, 0, NULL, 0);
+(183, '-----', 'Suniso 3GS', 'Refrigerant oil also helps maintain a proper seal in the compressor, preventing the refrigerant gas from leaking out and maintaining system efficiency.', 'Refrigerant Oil', 'product-1697431765.jpg', 24, '1st Storage Room Shelf 1', 600, 34, '2023-10-16 04:49:25', '2023-10-18 13:01:02', 0, 0, NULL, 0),
+(184, '-----', 'EMKARATE', '', 'Refrigerant Oil', 'product-1697632543.jpg', 16, '1st Storage Room Shelf 1', 600, 34, '2023-10-18 12:35:43', '2023-10-18 13:00:21', 0, 0, NULL, 0),
+(185, '-----', 'Suniso 4GS', '', 'Refrigerant Oil', 'product-1697633217.jpg', 9, '1st Storage Room Shelf 1', 900, 34, '2023-10-18 12:46:57', '2023-10-18 13:00:48', 0, 0, NULL, 0),
+(186, '-----', 'Suniso 5GS', '', 'Refrigerant Oil', 'product-1697633635.jpg', 8, '1st Storage Room Shelf 1', 900, 34, '2023-10-18 12:53:55', '2023-10-18 13:00:35', 0, 0, NULL, 0),
+(187, '-----', 'S-1/4 T-0.022', '', 'Copper Tube', 'product-1697634310.jpeg', 6, '1st Storage Room Shelf 2', 1071, 34, '2023-10-18 13:05:10', '2023-10-18 13:41:18', 0, 0, NULL, 0),
+(188, '-----', 'S-3/16, T-0.022', '', 'Copper Tube', 'product-1697634865.jpeg', 13, '1st Storage Room Shelf 2', 850, 34, '2023-10-18 13:14:25', '2023-10-18 13:45:10', 0, 0, NULL, 0),
+(189, '-----', 'S-5/16, T-0.028', '', 'Copper Tube', 'product-1697635107.jpeg', 12, '1st Storage Room Shelf 2', 1690, 34, '2023-10-18 13:18:27', '2023-10-18 13:44:37', 0, 0, NULL, 0),
+(190, '-----', 'S-3/8, T-0.022', '', 'Copper Tube', 'product-1697635200.jpeg', 8, '1st Storage Room Shelf 2', 1643, 34, '2023-10-18 13:20:00', '2023-10-18 13:35:36', 0, 0, NULL, 0),
+(191, '-----', 'S-3/8, T-0.028', '', 'Copper Tube', 'product-1697635294.jpeg', 12, '1st Storage Room Shelf 2', 2057, 34, '2023-10-18 13:21:34', '2023-10-18 13:43:59', 0, 0, NULL, 0),
+(192, '-----', 'S-3/8, T-0.032', '', 'Copper Tube', 'product-1697635422.jpeg', 14, '1st Storage Room Shelf 2', 2305, 34, '2023-10-18 13:23:42', '2023-10-18 13:43:43', 0, 0, NULL, 0),
+(193, '-----', 'S-1/2, T-0.022', '', 'Copper Tube', 'product-1697635549.jpeg', 9, '1st Storage Room Shelf 2', 2430, 34, '2023-10-18 13:25:49', '2023-10-18 13:43:32', 0, 0, NULL, 0),
+(194, '-----', 'S-1/2, T-0.028', '', 'Copper Tube', 'product-1697635627.jpeg', 13, '1st Storage Room Shelf 2', 2820, 34, '2023-10-18 13:27:07', '2023-10-18 13:43:07', 0, 0, NULL, 0),
+(195, '-----', 'S-1/2, T-0.032', '', 'Copper Tube', 'product-1697635721.jpeg', 12, '1st Storage Room Shelf 2', 3190, 34, '2023-10-18 13:28:41', '2023-10-18 13:42:49', 0, 0, NULL, 0),
+(196, '-----', 'S-5/8, T-0.022', '', 'Copper Tube', 'product-1697635803.jpeg', 15, '1st Storage Room Shelf 2', 2812, 34, '2023-10-18 13:30:03', '2023-10-18 13:42:35', 0, 0, NULL, 0),
+(197, '-----', 'S-5/8, T-0.028', '', 'Copper Tube', 'product-1697635880.jpeg', 15, '1st Storage Room Shelf 2', 3534, 34, '2023-10-18 13:31:20', '2023-10-18 13:42:10', 0, 0, NULL, 0),
+(198, '-----', 'S-5/8, T-0.032', '', 'Copper Tube', 'product-1697635932.jpeg', 15, '1st Storage Room Shelf 2', 4030, 34, '2023-10-18 13:32:12', '2023-10-18 13:42:22', 0, 0, NULL, 0),
+(199, '-----', 'S-3/4, T-0.028', '', 'Copper Tube', 'product-1697635999.jpeg', 14, '1st Storage Room Shelf 2', 4308, 34, '2023-10-18 13:33:19', '2023-10-18 13:41:50', 0, 0, NULL, 0),
+(200, '-----', 'S-3/4, T-0.032', '', 'Copper Tube', 'product-1697636390.jpeg', 7, '1st Storage Room Shelf 2', 4881, 34, '2023-10-18 13:39:50', '2023-10-18 13:41:31', 0, 0, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -351,29 +368,24 @@ CREATE TABLE IF NOT EXISTS `productsuppliers` (
   `updated_at` datetime NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1096 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1181 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `productsuppliers`
 --
 
 INSERT INTO `productsuppliers` (`id`, `supplier`, `product`, `updated_at`, `created_at`) VALUES
-(29, 5, 14, '2023-06-08 04:59:13', '2023-06-08 04:59:13'),
-(44, 5, 0, '2023-07-12 15:50:37', '2023-07-12 15:50:37'),
 (51, 10, 0, '2023-08-31 05:27:18', '2023-08-31 05:27:18'),
 (52, 0, 0, '2023-08-31 05:30:14', '2023-08-31 05:30:14'),
 (78, 10, 15, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(86, 5, 16, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (92, 8, 13, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (98, 8, 17, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (99, 9, 17, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (105, 11, 13, '2023-09-17 15:55:42', '2023-09-17 15:55:42'),
 (106, 11, 14, '2023-09-17 15:55:42', '2023-09-17 15:55:42'),
 (107, 11, 15, '2023-09-17 15:55:42', '2023-09-17 15:55:42'),
-(161, 5, 11, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (162, 9, 11, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (163, 11, 11, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(909, 18, 183, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (919, 16, 159, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (920, 16, 165, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (921, 18, 165, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -487,10 +499,6 @@ INSERT INTO `productsuppliers` (`id`, `supplier`, `product`, `updated_at`, `crea
 (1030, 22, 36, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1032, 21, 171, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1033, 21, 170, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(1034, 21, 173, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(1035, 24, 173, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(1036, 21, 172, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(1037, 24, 172, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1038, 23, 96, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1044, 23, 90, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1045, 23, 95, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -507,13 +515,9 @@ INSERT INTO `productsuppliers` (`id`, `supplier`, `product`, `updated_at`, `crea
 (1056, 20, 18, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1057, 16, 154, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1058, 18, 113, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(1059, 27, 113, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1060, 18, 112, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(1061, 27, 112, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1062, 18, 111, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(1063, 27, 111, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1064, 18, 110, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(1065, 27, 110, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1066, 16, 176, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1068, 16, 174, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1069, 16, 175, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -531,7 +535,6 @@ INSERT INTO `productsuppliers` (`id`, `supplier`, `product`, `updated_at`, `crea
 (1081, 25, 105, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1082, 25, 104, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1083, 25, 103, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(1084, 27, 168, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1085, 18, 167, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1086, 16, 166, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1087, 18, 166, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -542,7 +545,49 @@ INSERT INTO `productsuppliers` (`id`, `supplier`, `product`, `updated_at`, `crea
 (1092, 16, 29, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1093, 16, 28, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (1094, 16, 27, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(1095, 16, 26, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(1095, 16, 26, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1102, 18, 184, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1103, 18, 186, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1104, 18, 185, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1105, 18, 183, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1112, 21, 173, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1113, 24, 173, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1114, 21, 172, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1115, 24, 172, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1116, 21, 190, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1117, 24, 190, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1118, 21, 187, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1119, 24, 187, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1120, 21, 200, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1121, 24, 200, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1122, 21, 199, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1123, 24, 199, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1124, 21, 197, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1125, 24, 197, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1126, 21, 198, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1127, 24, 198, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1128, 21, 196, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1129, 24, 196, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1130, 21, 195, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1131, 24, 195, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1132, 21, 194, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1133, 24, 194, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1134, 21, 193, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1135, 24, 193, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1136, 21, 192, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1137, 24, 192, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1138, 21, 191, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1139, 24, 191, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1140, 21, 189, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1141, 24, 189, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1142, 21, 188, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1143, 24, 188, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1145, 25, 201, '2023-10-18 14:10:15', '2023-10-18 14:10:15'),
+(1176, 27, 110, '2023-10-18 14:20:36', '2023-10-18 14:20:36'),
+(1177, 27, 111, '2023-10-18 14:20:36', '2023-10-18 14:20:36'),
+(1178, 27, 112, '2023-10-18 14:20:36', '2023-10-18 14:20:36'),
+(1179, 27, 113, '2023-10-18 14:20:36', '2023-10-18 14:20:36'),
+(1180, 27, 168, '2023-10-18 14:20:36', '2023-10-18 14:20:36');
 
 -- --------------------------------------------------------
 
@@ -571,7 +616,7 @@ CREATE TABLE IF NOT EXISTS `suppliers` (
 --
 
 INSERT INTO `suppliers` (`id`, `s_tin`, `supplier_name`, `supplier_location`, `email`, `c_number`, `created_by`, `created_at`, `updated_at`, `deleted_at`, `deleted`) VALUES
-(5, '001-238-999-001', 'Nemia', 'Ozamis', 'nemiasing@gmail.com', '', 1, '2023-05-03 21:01:23', '2023-05-03 21:01:23', NULL, 0),
+(5, '-----', 'Local', 'Ozamis', 'nemiasing@gmail.com', '', 1, '2023-05-03 21:01:23', '2023-05-03 21:01:23', NULL, 0),
 (16, '-----', 'Central Aire Tech Corp.', 'Quezon City, Manila', 'sale@centralairetech.com', '09188634116', 1, '2023-10-08 05:50:17', '2023-10-08 05:50:17', NULL, 0),
 (17, '-----', 'HUA LAM Enterprises Inc.', 'Sta. Cruz, Manilla', 'hualam_ent495@yahoo.com', '09178122883', 1, '2023-10-08 06:01:20', '2023-10-08 06:01:20', NULL, 0),
 (18, '-----', 'ZYC Enterprises', 'Caloocan City', 'zycenterprise@gmail.com', '09178282019', 1, '2023-10-08 06:03:12', '2023-10-08 06:03:12', NULL, 0),
@@ -601,7 +646,7 @@ CREATE TABLE IF NOT EXISTS `tbl_cart` (
   `discounted` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `date_order` datetime DEFAULT NULL,
   PRIMARY KEY (`cart_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=205 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=231 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_cart`
@@ -787,7 +832,19 @@ INSERT INTO `tbl_cart` (`cart_id`, `time_order`, `product_id`, `qty`, `status`, 
 (201, '1697180588', '19', '1', 'rejected', NULL, NULL),
 (202, '1697180721', '19', '1', 'rejected', NULL, NULL),
 (203, '1697463794', '18', '1', 'completed', '', '2023-10-16 13:43:35'),
-(204, '1697463794', '19', '6', 'completed', '', '2023-10-16 13:43:35');
+(204, '1697463794', '19', '6', 'completed', '', '2023-10-16 13:43:35'),
+(210, '1697630527', '29', '1', 'completed', '', '2023-10-18 12:02:16'),
+(211, '1697630527', '28', '1', 'completed', '', '2023-10-18 12:02:16'),
+(214, '1697639930', '18', '1', 'rejected', NULL, NULL),
+(215, '1697639930', '19', '1', 'rejected', NULL, NULL),
+(216, '1697639930', '20', '1', 'rejected', NULL, NULL),
+(217, '1697639930', '21', '1', 'rejected', NULL, NULL),
+(218, '1697639930', '22', '1', 'rejected', NULL, NULL),
+(219, '1697639930', '26', '1', 'rejected', NULL, NULL),
+(220, '1697639930', '27', '1', 'rejected', NULL, NULL),
+(221, '1697639990', '20', '1', 'rejected', NULL, NULL),
+(222, '1697639990', '19', '1', 'rejected', NULL, NULL),
+(230, '1697646701', '18', '1', 'rejected', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1132,8 +1189,8 @@ INSERT INTO `users` (`id`, `employee_id`, `first_name`, `last_name`, `role`, `ex
 (30, '024175', 'jay francis', 'intig', 'manager', '', 'jayfrancis.intig20@gmail.com', '$2y$10$42t1ccJo.U377AvLuPD8KOWhSEVJti2vWJZan9P1aDLrI7WeVlYxO', '2023-10-04 05:18:05', '2023-10-04 05:18:05', 2366, '09876543706', '2023-10-16 03:48:40', 1),
 (31, '061796', 'mian', 'marco', 'employee', '', 'vivian.lumactod02@gmail.com', '$2y$10$uEIFJ5EO417/KSw4z./DlO2b/LnujvDQLX2Ih8CYgqi0waXWa76Ha', '2023-10-04 05:25:12', '2023-10-04 05:25:12', NULL, '09672084510', NULL, 0),
 (32, '029393', 'Rafael', 'Vicente', 'employee', '', 'ralphe@gmail.com', '$2y$10$jpY9DyWtqTsApP5vDT1qxu0UbjFFsFpi1WIeZ605Ym4nuiyTikrpy', '2023-10-04 09:13:31', '2023-10-04 09:13:31', NULL, '09172224545', NULL, 0),
-(33, '039471', 'Hilda', 'Baje', 'manager', 'main manager', 'kingsunenterprise@gmail.com', '$2y$10$j40p6pp2nUE.UttJKzb11epcdtzo.QEZnaSxHb2aCrXzgqMa3ou/y', '2023-10-09 03:19:34', '2023-10-17 03:25:52', NULL, '09867436849', NULL, 0),
-(34, '011938', 'Hilda', 'Gomez', 'manager', 'Technician', 'kingsunenterprise@gmail.com', '$2y$10$0LigP.sGPnMaIAfeNoi9YudbZtD0OkPEqTyr7xB5rwxyUzAurusKq', '2023-10-16 04:43:04', '2023-10-16 04:43:45', NULL, '09228726189', NULL, 0);
+(33, '039471', 'Hilda', 'Baje', 'manager', 'Main Manager', 'kingsunenterprise@gmail.com', '$2y$10$j40p6pp2nUE.UttJKzb11epcdtzo.QEZnaSxHb2aCrXzgqMa3ou/y', '2023-10-09 03:19:34', '2023-10-18 11:28:13', NULL, '09867436849', NULL, 0),
+(34, '011938', 'Hilda', 'Gomez', 'manager', 'Main Manager', 'kingsunenterprise@gmail.com', '$2y$10$0LigP.sGPnMaIAfeNoi9YudbZtD0OkPEqTyr7xB5rwxyUzAurusKq', '2023-10-16 04:43:04', '2023-10-18 11:27:57', NULL, '09228726189', NULL, 0);
 
 --
 -- Constraints for dumped tables
