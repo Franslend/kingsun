@@ -83,7 +83,7 @@
 				</ul>
 			</li>
 			<li class="liMainMenu">
-				<a href="./history.php" ><i class="fas fa-history"></i> <span class="menuText">History Bin</span></a>
+				<a href="./history.php" ><i class="fas fa-recycle"></i> <span class="menuText">History Bin</span></a>
 			</li>
 		</ul>
 	</div>

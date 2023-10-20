@@ -1,7 +1,7 @@
 <?php
 include('fetchProduct.php');
-  $categories = ['Cabin Filter', 'Capacitor', 'Compressor', 'Compressor Parts', 'Copper Tube', 'Dryer', 'Engine Filter', 'Evaporator', 'Refrigerant', 'Refrigerant Oil', 'Resistor Block', 'Rod', 'Rubber Insulation Tube', 'Others'];
-  $tableName = 'SELECT DISTINCT category FROM products';
+$categories = ['Cabin Filter', 'Capacitor', 'Compressor', 'Compressor Parts', 'Copper Tube', 'Dryer', 'Engine Filter', 'Evaporator', 'Refrigerant', 'Refrigerant Oil', 'Resistor Block', 'Rod', 'Rubber Insulation Tube', 'Others'];
+$tableName = 'SELECT DISTINCT category FROM products';
   $categories = fetchItem($tableName);
   date_default_timezone_set('Asia/Manila');
 ?>
@@ -147,17 +147,17 @@ thead th {
   </div>
 
   <!-- <script src="./js/pos-js.js"></script> -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="image-modal">
         ...
       </div>
       <div id="location_container">
-          <span style="display: block; text-align: left; padding-left: 15px;">Located at: </span>
+          <span style="display: block; text-align: left; padding-left: 15px;"></span>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -165,7 +165,6 @@ thead th {
     </div>
   </div>
 </div>
-
 
 
 <input type="hidden" id = "time_order" value = "<?= strtotime(date("Y-m-d H:i:s")) ?>" >
@@ -183,12 +182,11 @@ thead th {
                 <div class="col-md-5"><p style="float:right !important"><img src="images/logo2.png" alt=""></p></div>
                 <div class="col-md-5">
                   <h5 style="text-align:center !important;">
-                  KING SUN ENTERPRISES <br> 
-                  049 Corrales Ave., cor. Domingo Velez St.<br> 
-                  Cagayan de Oro City, Mis. Or. Philippines <br>
-                  Cell No. 0922-872-6189 <br> 
-                  NEMIA LAO SING - Prop.<br>
-                  VAT REG. TIN: 180-808-484-00000 <br>
+                      KINGSUN ENTERPRISES <br> 
+                      CORRALES STREET CORNER,<br> DOMINGO VELEZ St,<br> 
+                      CAGAYAN DE ORO <br> 
+                      kingsunenterprices@gmail.com <br>
+                      09312-3123-123
                   </h5>
                 </div>
               </div>
@@ -346,64 +344,32 @@ $(document).on('click', '#button-minus', function () {
 });
 
 
-
-/* mODAL POS picture
+/* Picture Modal */
 $(document).on('click', '#view-img', function () {
   var itemId = $(this).data("id");
-          $.ajax({
-            url: "fetchProduct.php",
-            type: "POST",
-            data: {view_img:1,itemId:itemId},
-            dataType: "json",
-            success: function(response) {
-              $("#exampleModal").modal("show");
-              $(".modal-body").html(response.src);
-            },
-            error: function(xhr, status, error) {
-                console.error("AJAX Error:", status, error);
-            }
-        });
+  $.ajax({
+    url: "fetchProduct.php",
+    type: "POST",
+    data: { view_img: 1, itemId: itemId },
+    dataType: "json",
+    success: function (response) {
+      $("#exampleModal").modal("show");
+
+      // Create a variable to store the combined content
+      var modalContent =
+        '<div class="modal-image">' + response.src + '</div>' +
+        '<div class="modal-location">' +
+        '<p>Located at: ' + response.p_location + '</p>' +
+        '</div>';
+
+      // Set the combined content to the modal
+      $("#image-modal").html(modalContent);
+    },
+    error: function (xhr, status, error) {
+      console.error("AJAX Error:", status, error);
+    }
+  });
 });
-*/
-
-/* mODAL POS picture*/
-$(document).on('click', '#view-img', function () {
-    var itemId = $(this).data("id");
-    $.ajax({
-        url: "fetchProduct.php",
-        type: "POST",
-        data: { view_img: 1, itemId: itemId },
-        dataType: "json",
-        success: function (response) {
-            $("#exampleModal").modal("show");
-
-            // Combine the image and location data
-            var modalContent = '<div class="modal-content">' +
-                                  '<div class="modal-header">' +
-                                    '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>' +
-                                  '</div>' +
-                                  '<div class="modal-body">' +
-                                    '<div class="modal-image">' + response.src + '</div>' +
-                                    '<div class="modal-location">' +
-                                      '<p>Located at: ' + response.p_location + '</p>' +
-                                    '</div>' +
-                                  '</div>' +
-                                  '<div class="modal-footer">' +
-                                    '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>' +
-                                  '</div>' +
-                                '</div>';
-
-            $(".modal-dialog").html(modalContent);
-        },
-        error: function (xhr, status, error) {
-            console.error("AJAX Error:", status, error);
-        }
-    });
-});
-
-
-
-
 
 
 
@@ -411,6 +377,7 @@ $(document).on('click', '#view-img', function () {
 $(document).on('input', '#discountInput', function () {
   discount();
 });
+
 function discount() {
     var rowCount = $('#fetchSelectedProduct tr:not(.excepted)').length;
     var sub_total = $('#sub_total').val();
@@ -537,5 +504,4 @@ $(document).on('click', '#printSubmit', function() {
   $('#exampleModal2').modal('hide');
 });
 });
-
 </script>

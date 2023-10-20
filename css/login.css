@@ -561,9 +561,9 @@ ul.dashboard_menu_lists{
 	margin-top:30px;
 }
 ul.dashboard_menu_lists li.liMainMenu{
-	padding-top: 7px;
+	padding-top: 13px;
 	text-transform: uppercase;
-	padding-bottom: 7px;
+	padding-bottom: 14px;
 }
 ul.dashboard_menu_lists li.liMainMenu a{
 	text-decoration: none;
@@ -571,7 +571,6 @@ ul.dashboard_menu_lists li.liMainMenu a{
 	display: block;
 	font-size: 15px;
 	padding: 0px 15px;
-	padding-bottom: 15px;
 	padding-right: 0px;
 }
 ul.dashboard_menu_lists li.liMainMenu a i{
