@@ -154,10 +154,11 @@ thead th {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <!-- Image or other content -->
+        ...
       </div>
       <div id="location_container">
           <span style="display: block; text-align: left; padding-left: 15px;">Located at: </span>
+      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
@@ -356,16 +357,14 @@ $(document).on('click', '#view-img', function () {
             dataType: "json",
             success: function(response) {
               $("#exampleModal").modal("show");
-              '<p>Located at: ' + response.p_location + '</p>' +
-              '</div>' +
               $(".modal-body").html(response.src);
             },
             error: function(xhr, status, error) {
                 console.error("AJAX Error:", status, error);
             }
         });
-});*/
-
+});
+*/
 
 /* mODAL POS picture*/
 $(document).on('click', '#view-img', function () {
@@ -380,19 +379,19 @@ $(document).on('click', '#view-img', function () {
 
             // Combine the image and location data
             var modalContent = '<div class="modal-content">' +
-                '<div class="modal-header">' +
-                '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>' +
-                '</div>' +
-                '<div class="modal-body">' +
-                '<div class="modal-image">' + response.src + '</div>' +
-                '<div class="modal-location">' +
-                '<p>Located at: ' + response.p_location + '</p>' +
-                '</div>' +
-                '</div>' +
-                '<div class="modal-footer">' +
-                '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>' +
-                '</div>' +
-                '</div>';
+                                  '<div class="modal-header">' +
+                                    '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>' +
+                                  '</div>' +
+                                  '<div class="modal-body">' +
+                                    '<div class="modal-image">' + response.src + '</div>' +
+                                    '<div class="modal-location">' +
+                                      '<p>Located at: ' + response.p_location + '</p>' +
+                                    '</div>' +
+                                  '</div>' +
+                                  '<div class="modal-footer">' +
+                                    '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>' +
+                                  '</div>' +
+                                '</div>';
 
             $(".modal-dialog").html(modalContent);
         },
@@ -538,19 +537,5 @@ $(document).on('click', '#printSubmit', function() {
   $('#exampleModal2').modal('hide');
 });
 });
-
-/* modal picture location*/
-$(document).ready(function() {
-    $('#exampleModal').on('show.bs.modal', function (event) {
-      var button = $(event.relatedTarget); // Button that triggered the modal
-      var product_id = button.data('product-id'); // Assuming you have a data attribute for product ID
-
-      // Use AJAX to fetch location information
-      $.get('get_location.php', { product_id: product_id }, function(data) {
-        var locationData = JSON.parse(data);
-        $('#p_location').html('Located at: ' + locationData.location);
-      });
-    });
-  });
 
 </script>

@@ -743,13 +743,20 @@ table, th, td{
 table{
 	width:100%;
 }
+
+
+
+
 table th{
 	font-size: 12px;
 	text-transform: uppercase;
 	text-align: center;
-	background: #333333;
-	color: #ffffff;
+	background: #337ab7;
+	color: #191111;
 }
+
+
+
 table td{
     font-size: 13px;
     text-align: center;
