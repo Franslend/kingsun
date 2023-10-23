@@ -15,11 +15,18 @@
                 $row_id = $po['id'];
                 $qty_ordered = (int) $po['qtyOrdered'];
                 $product_id = (int) $po['pid'];
-                $status = $delivered == $qty_ordered ? 'completed' : $po['status'];
+                
 
                 // Update quantity received
                 $updated_qty_received = $cur_qty_received + $delivered;
                 $qty_remaining = $qty_ordered - $updated_qty_received;
+
+                // Check if the delivered quantity equals the ordered quantity
+                if ($updated_qty_received === $qty_ordered) {
+                    $status = 'completed';
+                } else {
+                    $status = 'pending';
+                }
         
                 $sql = "UPDATE order_product
                             SET

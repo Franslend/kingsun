@@ -107,7 +107,7 @@ thead th {
       <div id="backdrop"></div>
       <div class="pos-column">
         <div class="pos-cart">
-          <h2>Cart</h2>
+          <h2>Selected Products</h2>
           <div class="pos-products2-cart">
             <input type="hidden" id="joinedItemIds">
             <table id="cartItems" class="cart-items">
@@ -445,6 +445,7 @@ $(document).on('click', '#checkoutButton', function () {
         });
   $('#exampleModal2').modal('show');
 });
+
 function printPreview(content, css) {
     var printWindow = window.open('', '_blank');
     var printContent = $('#' + content + '').html();
