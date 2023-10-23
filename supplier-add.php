@@ -28,7 +28,7 @@
 							<div class="column column-12">
 								<h1 class="section_header"> Create Supplier</h1>
 								<div id="userAddFormContainer">						
-									<form action="database/add.php" method="POST" class="appForm" enctype="multipart/form-data">
+									<form action="database/add-supp.php" method="POST" class="appForm" enctype="multipart/form-data">
 										<div class="appFormInputContainer">
 											<label for="s_tin">VAT REG. TIN</label>
 											<input type="text" class="appFormInput" placeholder="Enter supplier TIN..." id="s_tin" name="s_tin" required="" >

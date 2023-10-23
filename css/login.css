@@ -726,13 +726,13 @@ div.column-7{
 
 h1.section_header{
 	font-size: 21px;
-    color: darkblue;
+    color: black;
 	background-color: #62bad7;
 	padding-right: 100px;
     border-bottom: 1px solid #ffd7e1;
     padding-bottom: 11px;
     padding: 10px;
-    border-left: 6px solid mediumslateblue;
+    border-left: 6px solid black;
     margin-bottom: 15px;
 }
 table, th, td{    
@@ -750,7 +750,7 @@ table th{
 	font-size: 12px;
 	text-transform: uppercase;
 	text-align: center;
-	background: #337ab7;
+	background: #62bad7;
 	color: #191111;
 }
 

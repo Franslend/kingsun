@@ -156,9 +156,6 @@ thead th {
       <div class="modal-body" id="image-modal">
         ...
       </div>
-      <div id="location_container">
-          <span style="display: block; text-align: left; padding-left: 15px;"></span>
-      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
@@ -359,7 +356,7 @@ $(document).on('click', '#view-img', function () {
       var modalContent =
         '<div class="modal-image">' + response.src + '</div>' +
         '<div class="modal-location">' +
-        '<p>Located at: ' + response.p_location + '</p>' +
+        '<b><p>Located At: </b>' + response.p_location + '</p>' +
         '</div>';
 
       // Set the combined content to the modal

@@ -72,7 +72,7 @@
 			</li>
 			<li class="liMainMenu showHideSubMenu" >
 				<a href="javascript:void(0);" class="showHideSubMenu" >
-					<i class="fa fa-user-plus showHideSubMenu"></i> 
+					<i class="fa fa-clipboard showHideSubMenu"></i> 
 					<span class="menuText showHideSubMenu" >Sales Log</span>
 					<i class="fa fa-angle-right mainMenuIconArrow showHideSubMenu" ></i> 
 				</a>
