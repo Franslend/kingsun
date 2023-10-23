@@ -2,6 +2,7 @@
 	// Start the session.
 	session_start();
 	if(!isset($_SESSION['user'])) header('location: login.php');
+	date_default_timezone_set('Asia/Manila');
 
 	$_SESSION['table'] = 'products';
 	$_SESSION['redirect_to'] = 'product-add.php';

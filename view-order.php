@@ -202,7 +202,7 @@
                                     <select class="po_qty_status">\
                                         <option value="pending" '+ (poList.status == 'pending' ? 'selected' : '') +'>pending</option>\
                                         <option value="incomplete" '+ (poList.status == 'incomplete' ? 'selected' : '') +'>incomplete</option>\
-                                        <option value="complete" '+ (poList.status == 'complete' ? 'selected' : '') +'>complete</option>\
+                                        <option value="completed" '+ (poList.status == 'completed' ? 'selected' : '') +'>completed</option>\
                                     </select>\
                                     <input type="hidden" class="po_qty_row_id" value="'+ poList.id +'">\
                                     <input type="hidden" class="po_qty_pid" value="'+ poList.pid +'">\

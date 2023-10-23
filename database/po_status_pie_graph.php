@@ -1,7 +1,7 @@
 <?php
 
 include('connection.php');
-$statuses = ['pending', 'complete', 'incomplete'];
+$statuses = ['pending', 'completed', 'incomplete'];
 
 $results = []; 
 $date = isset($_GET['date']) ? 'AND YEAR(created_at) = '.$_GET['date'].'' : '';

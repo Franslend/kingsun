@@ -7,6 +7,7 @@
 	$show_table = 'products';
 	$products = include('database/show.php');
 	$categories = ['Cabin Filter', 'Capacitor', 'Compressor', 'Compressor Parts', 'Copper Tube', 'Dryer', 'Engine Filter', 'Evaporator', 'Refrigerant', 'Refrigerant Oil', 'Resistor Block', 'Rod', 'Rubber Insulation Tube', 'Others'];
+	date_default_timezone_set('Asia/Manila');
 ?>
 <!DOCTYPE html>
 <html>

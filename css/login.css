@@ -975,14 +975,14 @@ div.orderProductRow{
 	border-color: #556455;
 	}
 	
-.po-badge-complete{
+.po-badge-completed{
 	background: #b5ebb5;
 	border-color: green;
 }
 
 .po-badge-incomplete{
-	background: #f7e640;
-	color: #392b2b;
+	background: red;
+	color: black;
 	border-color: #a3a3a3;
 }
 
