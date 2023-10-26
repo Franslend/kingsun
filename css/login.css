@@ -1010,7 +1010,10 @@ div.orderProductRow{
 }
 
 
-
+/*users*/
+#go-bold {
+	font-weight: bold; /* Apply bold styling */
+}
 
 
 

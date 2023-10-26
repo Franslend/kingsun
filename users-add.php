@@ -64,7 +64,7 @@ function generateFiveDigitNumber() {
 											</select>
 										</div>
 										<div class="appFormInputContainer">
-											<label for="expertise">Expertise</label>
+											<label for="expertise">Designation: </label>
 											<input type="text" class="appFormInput" id="expertise" name="expertise" required="">						
 										</div>
 										<div class="appFormInputContainer">

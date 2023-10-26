@@ -111,7 +111,7 @@
                                                             <input type="hidden" class="po_qty_productid" value="<?= $batch_po['product']?>">
                                                         </td>
                                                         <td>
-                                                            <button class="appbtn appDeliveryHistory" data-id="<?= $batch_po['id'] ?>" > Deliveries </button>
+                                                            <button class="appbtn appDeliveryHistory" data-id="<?= $batch_po['id'] ?>" > Placed Orders </button>
                                                         </td>
                                                     </tr>
                                                     <?php } ?>

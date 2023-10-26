@@ -52,7 +52,7 @@
 														<th>First Name</th>
 														<th>Last Name</th>
 														<th>Role</th>
-														<th>Expertise</th>
+														<th>Designation</th>
 														<th>Contact Details</th>
 														<th>Created At</th>
 														<th>Updated At</th>
@@ -68,12 +68,12 @@
 													foreach($users2 as $index => $user){ ?>
 														<tr>
 															<td><?= $index + 1 ?></td>
-															<td class="employee_id"><?= $user['employee_id'] ?></td>
-															<td class="firstName"><?= $user['first_name'] ?></td>
-															<td class="lastName"><?= $user['last_name'] ?></td>
+															<td class="employee_id" id="go-bold"><?= $user['employee_id'] ?></td>
+															<td class="firstName" id="go-bold"><?= $user['first_name'] ?></td>
+															<td class="lastName" id="go-bold"><?= $user['last_name'] ?></td>
 															<td class="role"><?= $user['role'] ?></td>
 															<td class="experTise"><?= $user['expertise'] ?></td>
-															<td><span  class="email"><?= $user['email'] ?></span><br><span class="c_number"><?= $user['c_number'] ?></span></td>
+															<td><a class="email" id="emailTo" href="#email" data-email="<?= $user['email'] ?>"><?= $user['email'] ?></a><br><span class="c_number"><?= $user['c_number'] ?></span></td>
 															<td><?= date('M d,Y @ h:i:s A', strtotime($user['created_at'])) ?></td>
 															<td><?= date('M d,Y @ h:i:s A', strtotime($user['updated_at'])) ?></td>
 															<td>
@@ -95,9 +95,32 @@
 		</div>
 	</div>
 
+	<div class="modal fade" id="statusModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">SEND EMAIL</h4>
+      </div>
+      <div class="modal-body bootstrap-dialog-message">
+			<label for="" style="margin-bottom: 1px; margin-top: 3px">FROM</label>
+			<input id="fromEmail" type="text" class= "form-control" style="margin-bottom: 1px; margin-top: 3px" value="kingsunenterprise@gmail.com">													
+			<label for="" style="margin-bottom: 1px; margin-top: 3px">TO</label>
+			<input id="toEmail" type="text" class= "form-control" style="margin-bottom: 1px; margin-top: 3px" readonly>													
+			<label for="" style="margin-bottom: 1px; margin-top: 3px">SUBJECT</label>
+			<input id="subject" type="text" class= "form-control" style="margin-bottom: 1px; margin-top: 3px" >		
+			<label for="">MESSAGE</label>
+			<textarea id="msg" name="" id="" style="margin-bottom: 1px; margin-top: 3px" class= "form-control" cols="5" rows="5"></textarea>		
+      </div>
+      <div class="modal-footer">
+	  	<button type="button" id="sendEmailTo" class="btn btn-success">Send now</button>
+        <button type="button" id="closeModal" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 <?php include('partials/app-scripts.php'); ?>
-
 
 <script>
 	function script(){
@@ -182,7 +205,7 @@
 								</select>\
 							</div>\
 						<div class="form-group">\
-						    <label for="expertise">Expertise:</label>\
+						    <label for="expertise">Designation:</label>\
 						    <input type="text" class="form-control" id="experTise" value="'+ experTise +'">\
 						</div>\
 						  <div class="form-group">\
@@ -254,7 +277,67 @@
 	var script = new script;
 	script.initialize();
 
+
+	/* email mailer */
+	$(document).on('click', '#emailTo', function() {
+		$('#toEmail').val($(this).data('email'));
+		$('#statusModal2').modal('show');
+	});
+	$(document).on('click', '#sendEmailTo', function() {
+		var fromEmail = $('#fromEmail').val();
+		var toEmail = $('#toEmail').val();
+		var subject = $('#subject').val();
+		var msg = $('#msg').val();
+		if(fromEmail != '' && toEmail != '' && subject != '' && msg != ''){
+			var data = { 
+			fromEmail: fromEmail, 
+			toEmail: toEmail, 
+			subject: subject, 
+			msg: msg, 
+			phpmailer:'send_email' 
+			};
+			phpMailer(data);
+		}else{
+			alert('All fields required!')
+		}
+  	});
+
+	function phpMailer(data) {
+		$.ajax({
+			url: "fetchProduct.php",
+			type: "POST",
+			data: data,
+			dataType: "json",
+			beforeSend: function(response){
+				$('#sendEmailTo').prop('disabled', true).html('Please wait sending...');
+				$('#closeModal').prop('disabled', true);
+			},
+			success: function(response) {
+				$('#sendEmailTo').prop('disabled', false).html('Send now');
+				$('#closeModal').prop('disabled', false);
+				switch (data.phpmailer) {
+				case 'send_email':
+					if (response.msg) {
+						var toEmail = $('#toEmail').val('');
+						var subject = $('#subject').val('');
+						var msg = $('#msg').val('');
+						alert('Message Sent!');
+						$('#statusModal2').modal('hide');
+					}else{
+						alert("Email doesn't exist!");
+					}
+					break;
+				default:
+					alert("ERROR");
+					break;
+				}
+			},
+			error: function(xhr, status, error) {
+				console.error("AJAX Error:", status, error);
+			}
+		});
+	}
+
 </script>
-<script src="js/js.js"></script>
 </body>
 </html>

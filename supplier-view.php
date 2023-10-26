@@ -7,6 +7,11 @@
 	$show_table = 'suppliers';
 	$suppliers = include('database/show.php');
 ?>
+	<style>
+		#go-bold {
+			font-weight: bold; /* Apply bold styling */
+		}
+	</style>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,8 +72,8 @@
 													foreach($suppliers2 as $index => $supplier){ ?>
 														<tr>
 															<td><?= $index + 1 ?></td>
-															<td><?= $supplier['s_tin'] ?> </td>
-															<td>
+															<td id="go-bold"><?= $supplier['s_tin'] ?></td>
+															<td id="go-bold">
 																<?= $supplier['supplier_name'] ?>
 															</td>
 															<td><?= $supplier['supplier_location'] ?> </td>
@@ -137,7 +142,7 @@
       </div>
       <div class="modal-body bootstrap-dialog-message">
 			<label for="" style="margin-bottom: 1px; margin-top: 3px">FROM</label>
-			<input id="fromEmail" type="text" class= "form-control" style="margin-bottom: 1px; margin-top: 3px" value="kingsun@gmail.com">													
+			<input id="fromEmail" type="text" class= "form-control" style="margin-bottom: 1px; margin-top: 3px" value="kingsunenterprise@gmail.com">													
 			<label for="" style="margin-bottom: 1px; margin-top: 3px">TO</label>
 			<input id="toEmail" type="text" class= "form-control" style="margin-bottom: 1px; margin-top: 3px" readonly>													
 			<label for="" style="margin-bottom: 1px; margin-top: 3px">SUBJECT</label>
@@ -166,6 +171,7 @@
 
 	$products_arr = json_encode($products_arr);
 ?>
+
 <script>
 	var productsList = <?= $products_arr ?>;
 
@@ -364,6 +370,8 @@
             }
         }
     }
+
+	
 	$(document).on('click', '#emailTo', function() {
 		$('#toEmail').val($(this).data('email'));
 		$('#statusModal2').modal('show');
