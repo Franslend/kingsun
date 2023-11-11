@@ -301,7 +301,7 @@
 
 		yAxis: {
 			title: {
-				text: 'Product Sold',
+				text: 'Product Quantity',
 				style: {
                 	fontSize: '15px' // Custom font size for y-axis title
             	}
@@ -358,7 +358,7 @@
 		},
 
 		series: [{
-			name: 'Product Sold',
+			name: 'Product Received',
 			data: lineData
 		}], 
 

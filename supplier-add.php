@@ -14,6 +14,7 @@
 	<title>Add Supplier - Inventory Management System</title>
 	<?php include('partials/app-header-scripts.php'); ?>
 	<link rel="stylesheet" type="text/css" href="css/login.css ?v=<?php echo time(); ?>">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <body>

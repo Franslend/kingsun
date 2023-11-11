@@ -5,7 +5,7 @@
 	date_default_timezone_set('Asia/Manila');
 
 	$_SESSION['table'] = 'products';
-	$_SESSION['redirect_to'] = 'product-add.php';
+	$_SESSION['redirect_to'] = 'product-view.php';
 
 	$user = $_SESSION['user'];
 	$categories = ['Cabin Filter', 'Capacitor', 'Compressor', 'Compressor Parts', 'Copper Tube', 'Dryer', 'Engine Filter', 'Evaporator', 'Refrigerant', 'Refrigerant Oil', 'Resistor Block', 'Rod', 'Rubber Insulation Tube', 'Others'];
@@ -15,6 +15,7 @@
 <head>
 	<title>Add Product - KingSun Inventory System</title>
 	<?php include('partials/app-header-scripts.php'); ?>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -122,7 +123,7 @@
 											<input type="file" name="img" accept="image/*"/>
 										</div>
 
-										<button type="submit" class="appBtn"><i class="fa-fa-plus"></i> Create Product</button>
+										<button type="submit" class="appBtn"><i class="fas fa-plus"></i> Create Product</button>
 									</form>	
 
 								</div>	

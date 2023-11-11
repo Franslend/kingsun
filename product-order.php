@@ -4,6 +4,7 @@
 	if(!isset($_SESSION['user'])) header('location: login.php');
 
 
+
 	// Get all products.
 	$show_table = 'products';
 	$products = include('database/show.php');
@@ -20,7 +21,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script> -->
 		<!-- for select search -->
-
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -99,6 +100,7 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
 <script>
 	        // Initialize Select2 on the select element
 $(document).ready(function() { 

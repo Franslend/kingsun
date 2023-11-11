@@ -9,7 +9,7 @@
             $delivered = (int) $po['qtyDelivered'];
 
            // We don't save the data if it's zero received
-            if($delivered > 0){
+            if($delivered >= 0){
                 $cur_qty_received = (int) $po['qtyReceive'];
                 // $status = $po['status'];
                 $row_id = $po['id'];
@@ -36,8 +36,8 @@
             // Check if the delivered quantity equals the ordered quantity
             if ($updated_qty_received === $qty_ordered) {
                 $status = 'completed';
-            } elseif ($po['status'] === 'incomplete') {
-                $status = 'incomplete'; // Keep it as 'incomplete' if it was manually set
+            } elseif ( $updated_qty_received === 0) {
+                $status = 'cancelled'; // Keep it as 'incomplete' if it was manually set
             } else {
                 $status = 'pending';
             }

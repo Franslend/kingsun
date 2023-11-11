@@ -950,7 +950,7 @@ div.orderProductRow{
 }
 
 .poOrderUpdateBtnContainer{
-	margin-top: 20px;
+	margin-top: 15px;
 }
 
 .updatePoBtn{
@@ -961,7 +961,22 @@ div.orderProductRow{
 
 .updatePoBtn:hover{
 	color: #fff;
+	border-radius: 10px;
+	transition: 0.6s all;
 	background: #337AB7;
+}
+
+.cancelPoBtn{
+	color: black;
+	background: #fff;
+	border: 1px solid #337AB7;
+}
+
+.cancelPoBtn:hover{
+	color: #fff;
+	border-radius: 10px;
+	transition: 0.6s all;
+	background: #e25858;
 }
 
 .po-badge{
@@ -971,7 +986,7 @@ div.orderProductRow{
 }
 
 .po-badge-pending{
-	background: #ff7c76;
+	background: yellow;
 	border-color: #556455;
 	}
 	
@@ -980,8 +995,8 @@ div.orderProductRow{
 	border-color: green;
 }
 
-.po-badge-incomplete{
-	background: red;
+.po-badge-cancelled{
+	background: rgb(226, 88, 88);
 	color: black;
 	border-color: #a3a3a3;
 }

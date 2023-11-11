@@ -7,11 +7,6 @@
 	$show_table = 'suppliers';
 	$suppliers = include('database/show.php');
 ?>
-	<style>
-		#go-bold {
-			font-weight: bold; /* Apply bold styling */
-		}
-	</style>
 <!DOCTYPE html>
 <html>
 <head>

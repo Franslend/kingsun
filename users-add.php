@@ -13,6 +13,7 @@
 <head>
 	<title>Add User - Inventory Management System</title>
 	<?php include('partials/app-header-scripts.php'); ?>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <?php
 function generateFiveDigitNumber() {

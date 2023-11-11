@@ -13,10 +13,10 @@
 <html>
 <head>
 	<title>View Products - KingSun Inventory System</title>
-	<link rel="stylesheet" type="text/css" href="css/login.css">
 	<script src="https://kit.fontawesome.com/8bf423e820.js" crossorigin="anonymous"></script>
 	<?php include('partials/app-header-scripts.php'); ?>
 	<link rel="stylesheet" type="text/css" href="css/login.css ?v=<?php echo time(); ?>">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> <!-- error for edit part -->
 </head>
 <body>
 	<style>
@@ -169,7 +169,7 @@
 <div class="modal fade" id="modal-custom-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
 <?php 
-	//include('partials/app-scripts.php'); 
+	include('partials/app-scripts.php'); 
 
 	$show_table = 'suppliers';
 	$suppliers = include('database/show.php');
@@ -182,11 +182,6 @@
 
 	$suppliers_arr = json_encode($suppliers_arr);
 ?>
-
-<script src="./js/jquery/jquery-3.5.1.min.js"></script>
-<script src="./js/bootstrap-4.0.0/package.js"></script>
-<script src="./js/bootstrap-dialog.min.js"></script>
-<?php include('partials/app-scripts.php'); ?>
 
 
 <script>

@@ -119,6 +119,7 @@
                                             </table>
                                             <div class="poOrderUpdateBtnContainer alignRight">
                                                 <button class="appbtn updatePoBtn" data-id="<?= $batch_id ?>"> Update </button>
+                                                <button class="appbtn cancelPoBtn" data-id="<?= $batch_id ?>"> Cancel Order </button>
                                             </div>
                                         </div>
                                         
@@ -201,7 +202,7 @@
                                 <td>\
                                     <select class="po_qty_status">\
                                         <option value="pending" '+ (poList.status == 'pending' ? 'selected' : '') +'>pending</option>\
-                                        <option value="incomplete" '+ (poList.status == 'incomplete' ? 'selected' : '') +'>incomplete</option>\
+                                        <option value="cancelled" '+ (poList.status == 'cancelled' ? 'selected' : '') +'>cancelled</option>\
                                         <option value="completed" '+ (poList.status == 'completed' ? 'selected' : '') +'>completed</option>\
                                     </select>\
                                     <input type="hidden" class="po_qty_row_id" value="'+ poList.id +'">\
@@ -268,6 +269,47 @@
 						}
 					});
 				}
+
+
+                //cancel order
+                // Event listener for canceling orders
+                if (classList.contains('cancelPoBtn')) {
+                    e.preventDefault();
+                    batchNumber = targetElement.dataset.id;
+                    batchNumberContainer = 'container-' + batchNumber;
+
+                    // Show a confirmation dialog
+                    BootstrapDialog.confirm({
+                        type: BootstrapDialog.TYPE_DANGER,
+                        title: 'Cancel Purchase Order: Batch #: ' + batchNumber,
+                        message: 'Are you sure you want to cancel this Batch of Order?',
+                        callback: function (toCancel) {
+                            if (toCancel) {
+                                // Update the status for all items in the batch to "cancelled"
+                                $.ajax({
+                                    method: 'POST',
+                                    data: {
+                                        batch_id: batchNumber,
+                                    },
+                                    url: 'database/batch-cancel.php', // Create a new PHP script to handle batch cancellation
+                                    dataType: 'json',
+                                    success: function (data) {
+                                        message = data.message;
+
+                                        BootstrapDialog.alert({
+                                            type: data.success ? BootstrapDialog.TYPE_SUCCESS : BootstrapDialog.TYPE_DANGER,
+                                            message: message,
+                                            callback: function () {
+                                                if (data.success) location.reload();
+                                            },
+                                        });
+                                    },
+                                });
+                            }
+                        },
+                    });
+                }
+
 
                 // If deliveries btn is clicked
                 if(classList.contains('appDeliveryHistory')){

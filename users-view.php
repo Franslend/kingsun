@@ -15,6 +15,7 @@
 	<title>View Users - Inventory Management System</title>
 	<?php include('partials/app-header-scripts.php'); ?>
 	<link rel="stylesheet" type="text/css" href="css/login.css ?v=<?php echo time(); ?>">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
 	<div id="dashboardMainContainer">
@@ -78,7 +79,7 @@
 															<td><?= date('M d,Y @ h:i:s A', strtotime($user['updated_at'])) ?></td>
 															<td>
 																<a href="#" class="updateUser" data-userid="<?= $user['id'] ?>"> <i class="fa-regular fa-pen-to-square"></i> Edit</a>
-																<a href="" class="deleteUser" data-userid="<?= $user['id'] ?>" data-fname="<?= $user['first_name'] ?>" data-lname="<?= $user['last_name'] ?>" > <i class="fa fa-trash"></i> Delete</a>
+																<a href="" class="deleteUser" data-userid="<?= $user['id'] ?>" data-fname="<?= $user['first_name'] ?>" data-lname="<?= $user['last_name'] ?>" > <i class="fa fa-stop"></i> Deactivate</a>
 															</td>
 														</tr>
 													<?php } ?>
@@ -142,9 +143,9 @@
 					fullName = fname + ' ' + lname;
 
 					BootstrapDialog.confirm({
-						title: 'Delete User',
+						title: 'Deactivate User',
 						type: BootstrapDialog.TYPE_DANGER,
-						message: 'Are you sure to delete <strong>'+ fullName +'</strong> ?',
+						message: 'Are you sure you want to deactivate <strong>'+ fullName +'</strong> to access in the system?',
 						callback: function(isDelete){
 							if(isDelete){								
 								$.ajax({
