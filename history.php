@@ -122,7 +122,7 @@ $(function () {
 	$(document).on('click', '#restore', function() {
 		$('#table_name').val($(this).data('table_name'))
 		$('#primary_id').val($(this).data('primary_id'))
-		$('#modalTitle').html('Are you sure you want to restore this?');
+		$('#modalTitle').html('Are you sure you want to restore this data?');
 		$('#btnAction').html('<button type="button" class="btn btn-primary" id="restoreNow">Restore now</button>');
 		$('#statusModal3').modal('show');
 	});
@@ -150,7 +150,7 @@ $(function () {
 	$(document).on('click', '#delete_perma', function() {
 		$('#table_name').val($(this).data('table_name'))
 		$('#primary_id').val($(this).data('primary_id'))
-		$('#modalTitle').html('Are you sure you want to delete this completely in the system?');
+		$('#modalTitle').html('Are you sure you want to delete this data completely in the system?');
 		$('#btnAction').html('<button type="button" class="btn btn-danger" id="deleteNow">Delete now</button>');
 		$('#statusModal3').modal('show');
 	});

@@ -38,8 +38,8 @@
 											<div class="reportType">
 												<p>Print Report Employees</p>
 												<div class="alignRight">
-													<a href="database/report_csv.php?report=employee" class="reportExportBtn">Excel</a>
-													<a href="database/report_pdf.php?report=employee" class="reportExportBtn">PDF</a>
+													<a href="database/report_csv.php?report=employee" class="reportExportBtn btn btn-primary btn-sm">Excel</a>
+													<a href="database/report_pdf.php?report=employee" class="reportExportBtn btn btn-primary btn-sm">PDF</a>
 												</div>
 											</div>
 										</div>
@@ -78,8 +78,8 @@
 															<td><?= date('M d,Y @ h:i:s A', strtotime($user['created_at'])) ?></td>
 															<td><?= date('M d,Y @ h:i:s A', strtotime($user['updated_at'])) ?></td>
 															<td>
-																<a href="#" class="updateUser" data-userid="<?= $user['id'] ?>"> <i class="fa-regular fa-pen-to-square"></i> Edit</a>
-																<a href="" class="deleteUser" data-userid="<?= $user['id'] ?>" data-fname="<?= $user['first_name'] ?>" data-lname="<?= $user['last_name'] ?>" > <i class="fa fa-stop"></i> Deactivate</a>
+																<a href="#" class="updateUser btn btn-primary btn-sm" data-userid="<?= $user['id'] ?>"> <i class="fa-regular fa-pen-to-square"></i> Edit</a>
+																<a href="" class="deleteUser btn btn-danger btn-sm" data-userid="<?= $user['id'] ?>" data-fname="<?= $user['first_name'] ?>" data-lname="<?= $user['last_name'] ?>" > <i class="fa fa-stop"></i> Deactivate</a>
 															</td>
 														</tr>
 													<?php } ?>

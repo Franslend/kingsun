@@ -80,7 +80,7 @@ function generateFiveDigitNumber() {
 											<label for="password">Password</label>
 											<input type="password" class="appFormInput" id="password" name="password" required="" />	
 										</div>
-										<button type="submit" class="appBtn"><i class="fa fa-plus"></i> Add User</button>
+										<button type="submit" class="appBtn btn btn-primary"><i class="fa fa-plus"></i> Add User</button>
 									</form>	
 								</div>	
 							</div>

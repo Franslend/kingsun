@@ -7,40 +7,38 @@
 
         foreach ($purchase_orders as $po) {
             $delivered = (int) $po['qtyDelivered'];
-
-           // We don't save the data if it's zero received
-            if($delivered >= 0){
+        
+            // We don't save the data if it's zero received
+            if ($delivered >= 0) {
                 $cur_qty_received = (int) $po['qtyReceive'];
-                // $status = $po['status'];
                 $row_id = $po['id'];
                 $qty_ordered = (int) $po['qtyOrdered'];
                 $product_id = (int) $po['pid'];
-                
-            // Calculate the updated quantity received
-            $updated_qty_received = $cur_qty_received + $delivered;
-
-            // Check if the delivered quantity exceeds the ordered quantity
-            if ($updated_qty_received > $qty_ordered) {
-                $response = [
-                    'success' => false,
-                    'message' => "The input quantity exceeds the number of ordered products for one or more items.",
-                ];
-                echo json_encode($response);
-                exit; // Stop processing if there's an error
-            }
-
-            // Calculate the remaining quantity
-            $qty_remaining = $qty_ordered - $updated_qty_received;
-
-
-            // Check if the delivered quantity equals the ordered quantity
-            if ($updated_qty_received === $qty_ordered) {
-                $status = 'completed';
-            } elseif ( $updated_qty_received === 0) {
-                $status = 'cancelled'; // Keep it as 'incomplete' if it was manually set
-            } else {
-                $status = 'pending';
-            }
+        
+                // Calculate the updated quantity received
+                $updated_qty_received = $cur_qty_received + $delivered;
+        
+                // Check if the delivered quantity exceeds the ordered quantity
+                if ($updated_qty_received > $qty_ordered) {
+                    $response = [
+                        'success' => false,
+                        'message' => "The input quantity exceeds the number of ordered products for one or more items.",
+                    ];
+                    echo json_encode($response);
+                    exit; // Stop processing if there's an error
+                }
+        
+                // Calculate the remaining quantity
+                $qty_remaining = $qty_ordered - $updated_qty_received;
+        
+                // Check if the delivered quantity equals the ordered quantity
+                if ($updated_qty_received === $qty_ordered) {
+                    $status = 'completed';
+                } elseif ($delivered === 0 && $po['status'] === 'cancelled') {
+                    $status = 'cancelled';
+                } else {
+                    $status = 'pending'; // Change to 'pending' if delivered quantity is not zero
+                }
         
                 $sql = "UPDATE order_product
                             SET

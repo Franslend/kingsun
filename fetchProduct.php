@@ -103,6 +103,7 @@ session_start();
     echo $output;
 }
 
+//checkout scheme supplier
 if (isset($fetchSelectedProduct)) {
     $c_product = fetchItem('SELECT * FROM tbl_cart where product_id = '.$product_id.' and time_order = '.$time_order.'');
     $result = true;
@@ -175,25 +176,6 @@ if (isset($fetchSelectedProduct)) {
 
 
 
-/* Modal POS 
-if (isset($view_img)) {
-    $table = 'SELECT * FROM products where id ='.$itemId.'';
-    $product = fetchItem($table);
-    $output = '';
-    $total = 0;
-    if ($product['res_count'] > 0) {
-        foreach ($product['res'] as $key => $value) {
-            $img = ($value['img'] != null) ? '<img src="uploads/products/'.$value['img'].'" alt="" width="100%" height="400">' : '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png" alt="" width="100%" height="400">';
-            $output .= $img;
-        }
-    }
-    $response = array(
-        'src'=>$output
-    );
-    echo json_encode($response);
-}*/
-
-
 /* Modal POS Picture*/
 if (isset($view_img)) {
     $table = 'SELECT * FROM products where id =' . $itemId;
@@ -217,8 +199,6 @@ if (isset($view_img)) {
 
     echo json_encode($response);
 }
-
-
 
 
 
@@ -318,6 +298,8 @@ if(isset($fetchSelectedProductDashboard)){
     );
     echo json_encode($response);
 }
+
+//suppier info in  product view
 if (isset($viewAddEditDelete)) {
 
     $output = '';
@@ -371,8 +353,18 @@ if (isset($viewAddEditDelete)) {
             $table3 = "SELECT * FROM suppliers";
             $product3 = fetchItem($table3);
 
+
+            //POS data fetch
             if ($product['res_count'] > 0) {
-                $categories = ['Cabin Filter', 'Capacitor', 'Compressor', 'Compressor Parts', 'Copper Tube', 'Dryer', 'Engine Filter', 'Evaporator', 'Refrigerant', 'Refrigerant Oil', 'Resistor Block', 'Rod', 'Rubber Insulation Tube', 'Others'];
+                //Fetching data
+                require_once('database/category-conn.php');
+                $query = "select * from categories";
+                $result = mysqli_query($con, $query);
+                $categories = array();
+
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $categories[] = $row['category_name'];
+                }
                 foreach ($product['res'] as $key => $value) {
                     $output .= '<div class="row">
                                     <div class="col-md-12">
@@ -524,100 +516,107 @@ if (isset($viewAddEditDelete)) {
     );
     echo json_encode($response);
 }
-if (isset($chats)) {
-    $output = '';
-    $total = 0;
-    $x = 1;
-    $chat_with = '';
-    switch ($chats) {
-        case 'contact_list':
-            $table = "SELECT * FROM users where id != ".$_SESSION['user']['id']."";
-            $product = fetchItem($table);
-            if ($product['res_count'] > 0) {
-                foreach ($product['res'] as $key => $value) {
-                    $output .= '<tr style="cursor:pointer" id = "pick-person" data-id="'.$value['id'].'">';
-                        $output .= '<td colspan="4" class="text-center">'.$value['id'].'</td>';
-                        $output .= '<td colspan="4" class="text-center">'.$value['first_name'].' '.$value['last_name'].'</td>';
-                    $output .= '</tr>';
-                }
-            }else{
-                $output .= 'NO DATA';
-            }
-            break;
-        case 'pick_chat':
-            $con1 = $_SESSION['user']['id'] .'|'. $id;
-            $con2 = $id .'|'. $_SESSION['user']['id'];
-            $table = "SELECT * FROM tbl_rooms WHERE users = '".$con1."' OR users = '".$con2."'";
-            $product = fetchItem($table);
-            if ($product['res_count'] > 0) {
-                $table2 = "SELECT * FROM tbl_chats a inner join users b on a.send_by = b.id WHERE room_id = '".$product['res'][0]['room_id']."'";
-                $product2 = fetchItem($table2);
-                $output .= '<input type="hidden" id="room_id" value="'.$product['res'][0]['room_id'].'"/>';
-                $output .= '<input type="hidden" id="ka_talk" value="'.$id.'"/>';
-                $table3 = "SELECT * FROM users where id = $id";
-                $product3 = fetchItem($table3);
-                if ($product2['res_count'] > 0) {
-                    foreach ($product2['res'] as $key => $value) {
-                        $name = ($value['send_by'] == $_SESSION['user']['id']) ? 'YOU' : $value['first_name'].' '.$value['last_name'];
-                        if ($value['send_by'] == $_SESSION['user']['id']) {
-                            $output .= '<div class="row msg_container base_sent">
-                                            <div class="col-md-10 col-xs-10">
-                                                <div class="messages msg_sent">
-                                                <h5>'.$name.'</h5>
-                                                <p>'.$value['msg'].'</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 col-xs-2 avatar">
-                                                <img src="https://bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
-                                            </div>
-                                        </div>';
-                        } else {
-                        $output .= '<div class="row msg_container base_receive">
-                                        <div class="col-md-2 col-xs-2 avatar">
-                                            <img src="http://bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
-                                        </div>
-                                        <div class="col-md-10 col-xs-10">
-                                            <div class="messages msg_receive">
-                                                <h5>'.$name.'</h5>
-                                                <p>'.$value['msg'].'</p>
-                                                <time style = "display:none" datetime="2009-11-13T20:00">Timothy • 51 min</time>
-                                            </div>
-                                        </div>
-                                    </div>';
-                        }
-                    }
 
-                }else{
-                    $output .= '<h3 style="text-align:center">NO CONVERSATION</h3>';
-                }
-                $chat_with = $product3['res'][0]['first_name'].' '.$product3['res'][0]['last_name'];
-            }else{
-                $data = array(
-                    'users' => $con1,
-                );
-                $insert_data = insert_data('tbl_rooms',$data);
-                $output .= '<h3 style="text-align:center">NO CONVERSATION</h3>';
-            }
-            break;
-        case 'send_msg':
-            $data = array(
-                'room_id' => $room_id,
-                'msg' => $msg,
-                'send_by' => $_SESSION['user']['id'],
-            );
-            $insert_data = insert_data('tbl_chats',$data);
-            $output .= 'msg send';
-            break;
-        default:
-            $output .= 'ERROR 404';
-            break;
-    }
-    $response = array(
-        'content'=>$output,
-        'chat_with'=>$chat_with,
-    );
-    echo json_encode($response);
-}
+
+//chat system 
+//if (isset($chats)) {
+//    $output = '';
+//    $total = 0;
+//   $x = 1;
+//    $chat_with = '';
+//    switch ($chats) {
+//       case 'contact_list':
+//            $table = "SELECT * FROM users where id != ".$_SESSION['user']['id']."";
+//            $product = fetchItem($table);
+//            if ($product['res_count'] > 0) {
+//                foreach ($product['res'] as $key => $value) {
+//                    $output .= '<tr style="cursor:pointer" id = "pick-person" data-id="'.$value['id'].'">';
+//                        $output .= '<td colspan="4" class="text-center">'.$value['id'].'</td>';
+//                        $output .= '<td colspan="4" class="text-center">'.$value['first_name'].' '.$value['last_name'].'</td>';
+//                    $output .= '</tr>';
+//                }
+//            }else{
+//                $output .= 'NO DATA';
+//           }
+//          break;
+//        case 'pick_chat':
+//            $con1 = $_SESSION['user']['id'] .'|'. $id;
+//            $con2 = $id .'|'. $_SESSION['user']['id'];
+//            $table = "SELECT * FROM tbl_rooms WHERE users = '".$con1."' OR users = '".$con2."'";
+//            $product = fetchItem($table);
+//            if ($product['res_count'] > 0) {
+//                $table2 = "SELECT * FROM tbl_chats a inner join users b on a.send_by = b.id WHERE room_id = '".$product['res'][0]['room_id']."'";
+//                $product2 = fetchItem($table2);
+//                $output .= '<input type="hidden" id="room_id" value="'.$product['res'][0]['room_id'].'"/>';
+//                $output .= '<input type="hidden" id="ka_talk" value="'.$id.'"/>';
+//                $table3 = "SELECT * FROM users where id = $id";
+//                $product3 = fetchItem($table3);
+//                if ($product2['res_count'] > 0) {
+//                    foreach ($product2['res'] as $key => $value) {
+//                        $name = ($value['send_by'] == $_SESSION['user']['id']) ? 'YOU' : $value['first_name'].' '.$value['last_name'];
+//                       if ($value['send_by'] == $_SESSION['user']['id']) {
+//                            $output .= '<div class="row msg_container base_sent">
+//                                            <div class="col-md-10 col-xs-10">
+//                                                <div class="messages msg_sent">
+//                                                <h5>'.$name.'</h5>
+//                                                <p>'.$value['msg'].'</p>
+//                                                </div>
+//                                            </div>
+//                                            <div class="col-md-2 col-xs-2 avatar">
+//                                                <img src="https://bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+//                                            </div>
+//                                        </div>';
+//                        } else {
+//                        $output .= '<div class="row msg_container base_receive">
+//                                        <div class="col-md-2 col-xs-2 avatar">
+//                                            <img src="http://bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+//                                        </div>
+//                                        <div class="col-md-10 col-xs-10">
+//                                            <div class="messages msg_receive">
+//                                               <h5>'.$name.'</h5>
+//                                                <p>'.$value['msg'].'</p>
+//                                                <time style = "display:none" datetime="2009-11-13T20:00">Timothy • 51 min</time>
+//                                            </div>
+//                                        </div>
+//                                   </div>';
+//                        }
+//                    }
+//
+//                }else{
+//                    $output .= '<h3 style="text-align:center">NO CONVERSATION</h3>';
+//                }
+//                $chat_with = $product3['res'][0]['first_name'].' '.$product3['res'][0]['last_name'];
+//            }else{
+//                $data = array(
+//                    'users' => $con1,
+//                );
+//                $insert_data = insert_data('tbl_rooms',$data);
+//               $output .= '<h3 style="text-align:center">NO CONVERSATION</h3>';
+//            }
+//            break;
+//        case 'send_msg':
+//            $data = array(
+//                'room_id' => $room_id,
+//                'msg' => $msg,
+//                'send_by' => $_SESSION['user']['id'],
+//            );
+//            $insert_data = insert_data('tbl_chats',$data);
+//            $output .= 'msg send';
+//            break;
+//        default:
+//            $output .= 'ERROR 404';
+//            break;
+//    }
+//    $response = array(
+//        'content'=>$output,
+//        'chat_with'=>$chat_with,
+//    );
+//    echo json_encode($response);
+//}
+
+
+
+//view product update
 if (isset($updateProduct)) {
     // $new_status = $stocks <= 5 ? 1 : 0; //dari
     // if ($stocks <= 5 && $status == 1) {
@@ -695,6 +694,9 @@ if (isset($updateProduct)) {
         header('location: product-view.php');
     }
 }
+
+
+//for emailing
 if (isset($phpmailer)) {
     include_once('phpMailer/PHPMailer.php');
     include_once('phpMailer/SMTP.php');
@@ -780,6 +782,8 @@ if (isset($phpmailer)) {
     }
     echo json_encode($response);
 }
+
+//Sales log
 if (isset($summarySoldItems)) {
     $where = '';
     if (isset($start) && isset($end)) {
@@ -833,7 +837,7 @@ if (isset($summarySoldItems)) {
         }
         $output .= '<tr>
                         <th scope="row" colspan="4" class="text-right">TOTAL:</th>
-                        <td class="text-left">₱'.number_format($grand_total).'</td>
+                        <td class="text-left">₱'.number_format($grand_total).'.00</td>
                     </tr>';
         $response['msg'] = true;
     }else{
@@ -849,6 +853,8 @@ if (isset($summarySoldItems)) {
 
     echo json_encode($response);
 }
+
+//Receipt logs
 if (isset($customerReceipt)) {
     $where = '';
     if (isset($start) && isset($end)) {
@@ -876,7 +882,7 @@ if (isset($customerReceipt)) {
                 $output .= '<td class="text-left">
                 Date: '.date('F j, Y',strtotime($value['date'])).'
                 <br>Customer '.$x++.'</td>';
-                $output .= '<td class="text-left"><a target="_blank" href="database/report_pdf.php?report=collect_receipts&time_order='.$value['time_order'].'"><button type="button"  id="pdf-summarySoldItems" class="btn btn-sm btn-danger no-print">PDF</button></a></td>';
+                $output .= '<td class="text-left"><a target="_blank" href="database/report_pdf.php?report=collect_receipts&time_order='.$value['time_order'].'"><button type="button"  id="pdf-summarySoldItems" class="btn btn-sm btn-info no-print">PDF</button></a></td>';
             $output .= '</tr>';
         }
         $response['msg'] = true;
@@ -943,6 +949,9 @@ if (isset($notification)) {
         echo json_encode($response);
     }
 }
+
+
+//Delete History
 function selectModule($table){
     $table = "SELECT * FROM $table where deleted = 1";
     return fetchItem($table);
@@ -1004,6 +1013,8 @@ if (isset($historys_view)) {
     }
     echo json_encode(['data' => $data]);
 }
+
+//Restore deleted file history
 if(isset($restore_data)){
     if ($restore_data == 'RESTORE') {
         $data = array(

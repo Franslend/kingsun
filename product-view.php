@@ -6,17 +6,27 @@
 	// Get all products.
 	$show_table = 'products';
 	$products = include('database/show.php');
-	$categories = ['Cabin Filter', 'Capacitor', 'Compressor', 'Compressor Parts', 'Copper Tube', 'Dryer', 'Engine Filter', 'Evaporator', 'Refrigerant', 'Refrigerant Oil', 'Resistor Block', 'Rod', 'Rubber Insulation Tube', 'Others'];
+
+	//Fetching data
+	require_once('database/category-conn.php');
+	$query = "select * from categories";
+	$result = mysqli_query($con, $query);
+	$categories = array();
+
+	while ($row = mysqli_fetch_assoc($result)) {
+		$categories[] = $row['category_name'];
+	}
+	
 	date_default_timezone_set('Asia/Manila');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>View Products - KingSun Inventory System</title>
-	<script src="https://kit.fontawesome.com/8bf423e820.js" crossorigin="anonymous"></script>
 	<?php include('partials/app-header-scripts.php'); ?>
 	<link rel="stylesheet" type="text/css" href="css/login.css ?v=<?php echo time(); ?>">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> <!-- error for edit part -->
+	<link rel='stylesheet' href='https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='https://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.css'>	
 </head>
 <body>
 	<style>
@@ -63,8 +73,8 @@
 									<div class="reportType">
 										<p>Print Report Products</p>
 										<div class="alignRight">
-											<a href="database/report_csv.php?report=product" class="reportExportBtn">Excel</a>
-											<a href="database/report_pdf.php?report=product" class="reportExportBtn">PDF</a>
+											<a href="database/report_csv.php?report=product" class="reportExportBtn btn btn-primary btn-sm">Excel</a>
+											<a href="database/report_pdf.php?report=product" class="reportExportBtn btn btn-primary btn-sm">PDF</a>
 										</div>
 									</div>
 								</div>
@@ -148,8 +158,8 @@
 														<td><?= date('M d,Y @ h:i:s A', strtotime($product['created_at'])) ?></td>
 														<td><?= date('M d,Y @ h:i:s A', strtotime($product['updated_at'])) ?></td>
 														<td>
-															<a href="#edit" class="updateProduct-deleted" id="edit-Product" data-id="<?= $product['id'] ?>"> <i class="fa-regular fa-pen-to-square"></i> Edit</a> | 
-															<a href="" class="deleteProduct" data-name="<?= $product['product_name'] ?>" data-pid="<?= $product['id'] ?>"> <i class="fa fa-trash"></i> Delete</a>
+															<a href="#edit" class="updateProduct-deleted btn btn-primary btn-sm" id="edit-Product" data-id="<?= $product['id'] ?>"> <i class="fa-regular fa-pen-to-square"></i> Edit</a>
+															<a href="" class="deleteProduct btn btn-danger btn-sm" data-name="<?= $product['product_name'] ?>" data-pid="<?= $product['id'] ?>"> <i class="fa fa-trash"></i> Delete</a>
 														</td>
 													</tr>
 												<?php } ?>
@@ -183,7 +193,7 @@
 	$suppliers_arr = json_encode($suppliers_arr);
 ?>
 
-
+<script src="https://kit.fontawesome.com/8bf423e820.js" crossorigin="anonymous"></script>
 <script>
 var suppliersList = <?= $suppliers_arr ?>;
 	function script(){
@@ -261,20 +271,23 @@ var suppliersList = <?= $suppliers_arr ?>;
 
 		},
 
-		this.saveUpdatedData = function(form){
+		this.saveUpdatedData = function(form) {
 			$.ajax({
 				method: 'POST',
 				data: new FormData(form),
 				url: 'database/update-product.php',
 				processData: false,
-        		contentType: false,
-        		dataType: 'json',
-				success: function(data){
+				contentType: false,
+				dataType: 'json',
+				success: function(data) {
 					BootstrapDialog.alert({
-						type: data.success ? BootstrapDialog.TYPE_SUCCESS : BootstrapDialog.TYPE_DANGER,
+						type: data.status === 'success' ? BootstrapDialog.TYPE_SUCCESS : BootstrapDialog.TYPE_DANGER,
 						message: data.message,
-						callback:function(){
-							if(data.success) location.reload();
+						callback: function() {
+							if (data.status === 'success') {
+								// Reload the page or update specific content as needed
+								location.reload();
+							}
 						}
 					});
 				}
@@ -419,7 +432,7 @@ function showEditDialogs(id) {
 		var modal_body = `<div class="modal-dialog modal-lg">
 									<form action="fetchProduct.php" method="POST" enctype="multipart/form-data" id="editProductForm">
 										<div class="modal-content">
-										<div class="modal-header">
+										<div class="modal-header" style="background-color:#55b0cf">
 											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 											<h4 class="modal-title" id="myModalLabel">`+data.viewAddEditDelete+`</h4>
 										</div>

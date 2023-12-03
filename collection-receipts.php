@@ -15,6 +15,8 @@
 	<title>View Users - Inventory Management System</title>
 	<?php include('partials/app-header-scripts.php'); ?>
 	<link rel="stylesheet" type="text/css" href="css/login.css ?v=<?php echo time(); ?>">
+    <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='https://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.css'>	
 </head>
 <body>
 	<div id="dashboardMainContainer">

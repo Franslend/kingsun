@@ -32,10 +32,10 @@
 											<input type="text" id="searchInput" placeholder="Enter supplier name..." oninput="filterProductsBySearch()" />
 										</div>
 											<div class="reportType">
-											<p>Print Report Suppliers</p>
+											<p>Print Suppliers Data</p>
 											<div class="alignRight">
-												<a href="database/report_csv.php?report=supplier" class="reportExportBtn">Excel</a>
-												<a href="database/report_pdf.php?report=supplier" class="reportExportBtn">PDF</a>
+												<a href="database/report_csv.php?report=supplier" class="reportExportBtn btn btn-primary btn-sm">Excel</a>
+												<a href="database/report_pdf.php?report=supplier" class="reportExportBtn btn btn-primary btn-sm">PDF</a>
 											</div>
 										</div>
 									</div>
@@ -111,8 +111,8 @@
 															<td><?= date('M d,Y @ h:i:s A', strtotime($supplier['created_at'])) ?></td>
 															<td><?= date('M d,Y @ h:i:s A', strtotime($supplier['updated_at'])) ?></td>
 															<td>
-																<a href="" class="updateSupplier" data-sid="<?= $supplier['id'] ?>"> <i class="fa fa-pencil"></i> Edit</a> | 
-																<a href="" class="deleteSupplier" data-name="<?= $supplier['supplier_name'] ?>" data-sid="<?= $supplier['id'] ?>"> <i class="fa fa-trash"></i> Delete</a>
+																<a href="" class="updateSupplier btn btn-primary btn-sm" data-sid="<?= $supplier['id'] ?>"> <i class="fa fa-pencil"></i> Edit</a>
+																<a href="" class="deleteSupplier btn btn-danger btn-sm" data-name="<?= $supplier['supplier_name'] ?>" data-sid="<?= $supplier['id'] ?>"> <i class="fa fa-trash"></i> Delete</a>
 															</td>
 														</tr>
 													<?php } ?>

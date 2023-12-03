@@ -50,7 +50,7 @@
 											<label for="email">Phone Number</label>
 											<input type="number" class="appFormInput" placeholder="Enter supplier number..." id="#" name="c_number" required="" >
 										</div>
-										<button type="submit" class="appBtn"><i class="fa fa-plus"></i> Create Supplier</button>
+										<button type="submit" class="appBtn btn btn-primary"><i class="fa fa-plus"></i> Create Supplier</button>
 									</form>	
 
 									<?php 

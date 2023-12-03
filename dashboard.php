@@ -21,6 +21,8 @@
 	<title>Dashboard - KingSun</title>
 	<link rel="stylesheet" type="text/css" href="css/login.css">
 	<script src="https://kit.fontawesome.com/8bf423e820.js" crossorigin="anonymous"></script>
+	<link rel='stylesheet' href='https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='https://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.css'>	
 </head>
 <body>
 	<div id="dashboardMainContainer">
@@ -112,9 +114,9 @@
 <div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" style="background-color: #55b0cf">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Order Details</h4>
+        <h4 class="modal-title" id="myModalLabel"><b>Order Details</b></h4>
       </div>
       <div class="modal-body">
           <table id="cartItems" class="cart-items">
@@ -145,9 +147,9 @@
 <div class="modal fade" id="statusModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" style="background-color: #55b0cf">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Delivery Histories</h4>
+        <h4 class="modal-title" id="myModalLabel"><b>Delivery Histories</b></h4>
       </div>
       <div class="modal-body">
           <table id="cartItems2" class="cart-items2">
@@ -171,9 +173,9 @@
 <div class="modal fade" id="statusModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" style="background-color: #55b0cf">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Transaction Histories</h4>
+        <h4 class="modal-title" id="myModalLabel"><b>Transaction Histories</b></h4>
       </div>
       <div class="modal-body">
           <table id="cartItems2" class="cart-items2">

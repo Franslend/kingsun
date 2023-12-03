@@ -15,6 +15,8 @@
 	<title>View Users - Inventory Management System</title>
 	<?php include('partials/app-header-scripts.php'); ?>
 	<link rel="stylesheet" type="text/css" href="css/login.css ?v=<?php echo time(); ?>">
+    <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='https://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.css'>	
 </head>
 <body>
 	<div id="dashboardMainContainer">
@@ -29,22 +31,6 @@
                                 <h1 class="section_header"> Sale's Logs</h1>
                                 <div class="section_content">
                                         <h4>Monthly sales</h5>
-                                        <!-- <div class="row">
-                                            <div class="col-md-2">
-                                                <label for="basic-url">FROM</label>
-                                                <input type="date" class="form-control">
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label for="basic-url">TO</label>
-                                                <input type="date" class="form-control">
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label for="basic-url">Action</label>
-                                                <br>
-                                                <br>
-                                                <button type="button" class="btn btn-primary">Find</button>
-                                            </div>
-                                        </div> -->
                                             <style>
                                                 .bor{
                                                     border: 5px solid red;
@@ -232,25 +218,3 @@
 <script src="js/js.js"></script>
 </body>
 </html>
-
-<!-- SELECT 
-    sub.product_id,
-    sub.product_name,
-    sub.price_per_item,
-    sub.sold_items,
-    sub.price_per_item_sum + sub.sold_items_sum AS total_sum
-FROM (
-    SELECT 
-        a.product_id,
-        b.product_name,
-        b.price AS price_per_item,
-        SUM(a.qty) AS sold_items,
-        SUM(b.price) AS price_per_item_sum,
-        SUM(a.qty) AS sold_items_sum
-    FROM
-        client02.tbl_cart a 
-    LEFT JOIN
-        client02.products b ON a.product_id = b.id
-	where a.status = 'completed' and DATE(date_order) BETWEEN '2023-09-28' and '2023-09-29'
-    GROUP BY a.product_id, b.product_name, b.price
-) AS sub; -->

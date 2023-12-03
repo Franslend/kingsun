@@ -30,8 +30,6 @@ if($file_data['tmp_name'] !== ''){
 }
 
 
-
-
 // Update the product record
 try {
 	$sql = "UPDATE products 
@@ -77,7 +75,8 @@ try {
 		'success' => false,
 		'message' => "Error processing your request"
 	];
-}
+};
 
-
+header('Content-Type: application/json');
 echo json_encode($response);
+exit; // Exit to prevent any additional output

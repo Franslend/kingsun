@@ -34,15 +34,15 @@
                                         <div class="reportType">
                                             <p>Print Report Deliveries</p>
                                             <div class="alignRight">
-                                                <a href="database/report_csv.php?report=delivery" class="reportExportBtn">Excel</a>
-                                                <a href="database/report_pdf.php?report=delivery" class="reportExportBtn">PDF</a>
+                                                <a href="database/report_csv.php?report=delivery" class="reportExportBtn btn btn-primary btn-sm">Excel</a>
+                                                <a href="database/report_pdf.php?report=delivery" class="reportExportBtn btn btn-primary btn-sm">PDF</a>
                                             </div>
                                         </div>
                                         <div class="reportType">
                                             <p>Print Report Purchase Orders</p>
                                             <div class="alignRight">
-                                                <a href="database/report_csv.php?report=purchase_orders" class="reportExportBtn">Excel</a>
-                                                <a href="database/report_pdf.php?report=purchase_orders" class="reportExportBtn">PDF</a>
+                                                <a href="database/report_csv.php?report=purchase_orders" class="reportExportBtn btn btn-primary btn-sm">Excel</a>
+                                                <a href="database/report_pdf.php?report=purchase_orders" class="reportExportBtn btn btn-primary btn-sm">PDF</a>
                                             </div>
                                         </div>
                                     </div>
@@ -111,15 +111,15 @@
                                                             <input type="hidden" class="po_qty_productid" value="<?= $batch_po['product']?>">
                                                         </td>
                                                         <td>
-                                                            <button class="appbtn appDeliveryHistory" data-id="<?= $batch_po['id'] ?>" > Placed Orders </button>
+                                                            <button class="appbtn appDeliveryHistory btn btn-info" data-id="<?= $batch_po['id'] ?>" > Placed Orders </button>
                                                         </td>
                                                     </tr>
                                                     <?php } ?>
                                                 </tbody>
                                             </table>
                                             <div class="poOrderUpdateBtnContainer alignRight">
-                                                <button class="appbtn updatePoBtn" data-id="<?= $batch_id ?>"> Update </button>
-                                                <button class="appbtn cancelPoBtn" data-id="<?= $batch_id ?>"> Cancel Order </button>
+                                                <button class="appbtn updatePoBtn btn btn-primary" data-id="<?= $batch_id ?>"> Update </button>
+                                                <button class="appbtn cancelPoBtn btn btn-danger" data-id="<?= $batch_id ?>"> Cancel Order </button>
                                             </div>
                                         </div>
                                         

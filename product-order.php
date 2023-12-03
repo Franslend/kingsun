@@ -44,7 +44,7 @@
 									<form action="database/save-order.php" method="POST">
 
 										<div class="alignRight" id="testawdawd">
-											<button type="button" class="orderBtn orderProductBtn" id="orderProductBtn">Add Another Product</button>
+											<button type="button" class="orderBtn orderProductBtn btn btn-secondary" id="orderProductBtn">Add Another Product</button>
 											<!-- <button type="button" class="orderBtn test1" id="test1">with search</button> -->
 										</div>
 
@@ -63,14 +63,14 @@
 														<option value="<?= $value['id'] ?>"><?= $value['product_name'] ?></option>
 													<?php } ?>
 													</select>
-													<button type="button" class="d-none appbtn removeOrderBtn">Remove</button>		    
+													<button type="button" class="d-none appbtn removeOrderBtn btn btn-danger">Remove</button>		    
 												</div>
 												<div class="suppliersRows" id="supplierRows_0" data-counter="0"></div>
 											</div>
 										</div>	
 
 										<div class="alignRight marginTop20">
-											<button type="submit" class="orderBtn submitOrderProductBtn">Submit Order</button>
+											<button type="submit" class="orderBtn submitOrderProductBtn btn btn-primary">Submit Order</button>
 										</div>
 									</form>
 								</div>

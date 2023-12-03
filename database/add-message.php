@@ -88,7 +88,7 @@
 
         $response = [
 			'success' => true,
-			'message' => ' The New product "' . $product['product_name'] . '" has been recorded and saved in the system '
+			'message' => ' The New product has been recorded and saved in the system '
 		];			
 	} catch (PDOException $e) {
 		$response = [
